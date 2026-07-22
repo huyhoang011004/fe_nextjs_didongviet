@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Card, CardContent } from '@/shared/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { googleLoginAction } from './actions';
 import { AlertCircle, CheckCircle2, ArrowLeft } from 'lucide-react';
 

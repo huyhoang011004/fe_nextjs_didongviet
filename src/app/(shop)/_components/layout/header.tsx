@@ -15,9 +15,9 @@ import {
   ChevronRight,
   Trash2,
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { BiCategory } from 'react-icons/bi';
-import { Label } from '@/shared/components/ui/label';
+import { Label } from '@/components/ui/label';
 import HeaderSearch from './HeaderSearch';
 import {
   DropdownMenu,
@@ -27,7 +27,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger, // Thêm dòng này vào
-} from '@/shared/components/ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 
 // XÓA DÒNG NÀY: import { DropdownMenu as DropdownMenuPrimitive } from '@radix-ui/react-dropdown-menu';
 import { useCartStore } from '@/app/(shop)/cart/useCartStore';
@@ -212,9 +212,10 @@ export default function Header() {
             className={`
               flex items-center justify-between gap-4 md:gap-8 w-full min-w-0 
               transition-all duration-300 ease-in-out border-b border-white/10
-              ${isHeaderVisible
-                ? 'max-h-[35px] opacity-100 py-0.5 md:py-1'
-                : 'max-h-0 opacity-0 py-0 pointer-events-none overflow-hidden border-none'
+              ${
+                isHeaderVisible
+                  ? 'max-h-[35px] opacity-100 py-0.5 md:py-1'
+                  : 'max-h-0 opacity-0 py-0 pointer-events-none overflow-hidden border-none'
               }
             `}
           >
@@ -439,7 +440,10 @@ export default function Header() {
                       <span className='text-xs font-bold text-slate-800 uppercase tracking-wider'>
                         Giỏ hàng của tôi ({cartItems.length} sản phẩm)
                       </span>
-                      <Link href='/cart' className='text-[11px] font-bold text-didongviet-red hover:underline'>
+                      <Link
+                        href='/cart'
+                        className='text-[11px] font-bold text-didongviet-red hover:underline'
+                      >
                         Xem tất cả
                       </Link>
                     </div>
@@ -455,7 +459,10 @@ export default function Header() {
                       <>
                         <div className='max-h-[280px] overflow-y-auto divide-y divide-slate-100 no-scrollbar'>
                           {cartItems.slice(0, 5).map((item) => (
-                            <div key={`${item.product}-${item.variant}`} className='p-3 flex gap-3 hover:bg-slate-50/40 transition-colors group'>
+                            <div
+                              key={`${item.product}-${item.variant}`}
+                              className='p-3 flex gap-3 hover:bg-slate-50/40 transition-colors group'
+                            >
                               <Link
                                 href={`/${item.categorySlug || 'dien-thoai'}/${item.slug}`}
                                 className='w-12 h-12 rounded-lg border border-slate-100 bg-slate-50 overflow-hidden flex items-center justify-center p-1 shrink-0'
@@ -476,20 +483,29 @@ export default function Header() {
                                   {item.name}
                                 </Link>
                                 <span className='block text-[9px] text-slate-400 font-semibold'>
-                                  Phân loại: {item.selectedColor || 'Mặc định'}{item.selectedStorage ? ` - ${item.selectedStorage}` : ''}
+                                  Phân loại: {item.selectedColor || 'Mặc định'}
+                                  {item.selectedStorage
+                                    ? ` - ${item.selectedStorage}`
+                                    : ''}
                                 </span>
                                 <div className='flex items-center justify-between mt-1'>
                                   <span className='text-[10px] text-slate-405 font-medium'>
                                     SL: {item.quantity}
                                   </span>
                                   <span className='text-[11px] font-bold text-didongviet-red'>
-                                    {((item.salePrice || item.price) * item.quantity).toLocaleString('vi-VN')}đ
+                                    {(
+                                      (item.salePrice || item.price) *
+                                      item.quantity
+                                    ).toLocaleString('vi-VN')}
+                                    đ
                                   </span>
                                 </div>
                               </div>
 
                               <button
-                                onClick={() => removeCartItem(item.product, item.variant)}
+                                onClick={() =>
+                                  removeCartItem(item.product, item.variant)
+                                }
                                 className='h-6 w-6 rounded-md border border-slate-100 bg-white flex items-center justify-center text-slate-400 hover:text-didongviet-red hover:border-red-200 hover:bg-red-50 cursor-pointer transition-all opacity-0 group-hover:opacity-100 self-center'
                                 title='Xóa sản phẩm'
                               >
@@ -501,13 +517,16 @@ export default function Header() {
 
                         {cartItems.length > 5 && (
                           <div className='px-4 py-1.5 bg-red-50/20 border-t border-slate-100 text-center text-[10px] font-semibold text-slate-500'>
-                            Còn {cartItems.length - 5} sản phẩm khác trong giỏ hàng
+                            Còn {cartItems.length - 5} sản phẩm khác trong giỏ
+                            hàng
                           </div>
                         )}
 
                         <div className='p-3 bg-slate-50/80 border-t border-slate-100 space-y-2.5'>
                           <div className='flex items-center justify-between text-xs'>
-                            <span className='font-semibold text-slate-500'>Tổng tiền tạm tính:</span>
+                            <span className='font-semibold text-slate-500'>
+                              Tổng tiền tạm tính:
+                            </span>
                             <span className='font-black text-sm text-didongviet-red'>
                               {cartTotalPrice.toLocaleString('vi-VN')}đ
                             </span>

@@ -1,7 +1,7 @@
 // app/(shop)/layout.tsx
 import Header from '@/app/(shop)/_components/layout/header';
 import Footer from '@/app/(shop)/_components/layout/footer';
-import ChatbotWidget from '@/shared/components/chatbot/ChatbotWidget';
+import ChatbotWidget from '@/components/chatbot/ChatbotWidget';
 
 export default function ShopLayout({
   children,

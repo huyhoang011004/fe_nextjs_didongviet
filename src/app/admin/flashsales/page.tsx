@@ -15,7 +15,7 @@ import {
   Eye,
   Settings,
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   getFlashSalesAction,
   createFlashSaleAction,

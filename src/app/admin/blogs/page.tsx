@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useBlog } from './useBlog';
 import { BlogHeader } from '@/app/admin/blogs/_blog-components/BlogHeader';
 import { BlogFilters } from '@/app/admin/blogs/_blog-components/BlogFilters';

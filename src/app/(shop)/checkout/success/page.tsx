@@ -11,7 +11,7 @@ import {
   AlertTriangle,
   CreditCard,
 } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 function SuccessContent() {
   const router = useRouter();

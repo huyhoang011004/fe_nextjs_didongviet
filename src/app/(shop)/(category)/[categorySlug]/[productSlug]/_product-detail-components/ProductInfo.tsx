@@ -14,7 +14,7 @@ import {
   Zap,
   ChevronRight,
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface ProductInfoProps {
   product: any;

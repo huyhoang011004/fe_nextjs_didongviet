@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Calendar, CreditCard } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface OrderCardProps {
   order: any;

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { X, Plus, FileSpreadsheet } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface CreateReceiptModalProps {
   isOpen: boolean;

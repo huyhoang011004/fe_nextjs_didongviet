@@ -8,15 +8,15 @@ import {
   useTransition,
 } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { cn } from '@/shared/lib/utils';
-import { Button } from '@/shared/components/ui/button';
-import { Card, CardContent } from '@/shared/components/ui/card';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from '@/shared/components/ui/field';
+} from '@/components/ui/field';
 import { verifyOtpAction, resendOtpAction } from './actions';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { X, Calendar, User, Trash2, ArrowLeft, ArrowRight, CornerDownLeft } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface ReceiptsListModalProps {
   isOpen: boolean;

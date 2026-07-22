@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Loader2, Ticket, Percent, Clock, AlertCircle, Check, HelpCircle } from 'lucide-react';
 
 export default function VoucherList({

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye, EyeOff, Edit, Trash2, FolderOpen, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Blog } from '@/types/blog';
 
 interface BlogTableProps {

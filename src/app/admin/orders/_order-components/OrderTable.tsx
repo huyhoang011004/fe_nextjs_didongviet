@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Check, ChevronDown, Eye, FolderOpen, PackageCheck, Truck } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface OrderTableProps {
   orders: any[];

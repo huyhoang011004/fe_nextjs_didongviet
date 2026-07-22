@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShieldCheck, Award } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
-import { resolveImageUrl } from '@/shared/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { resolveImageUrl } from '@/lib/utils';
 
 interface ProfileTabProps {
   user: any;

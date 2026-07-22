@@ -23,7 +23,7 @@ import {
   Newspaper,
   ChevronRight as ChevronRightIcon,
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface HeroSectionProps {
   categories?: any[];

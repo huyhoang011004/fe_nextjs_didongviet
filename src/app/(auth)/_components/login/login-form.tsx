@@ -1,16 +1,16 @@
 'use client';
 
-import { cn } from '@/shared/lib/utils';
-import { Button } from '@/shared/components/ui/button';
-import { Card, CardContent } from '@/shared/components/ui/card';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
-} from '@/shared/components/ui/field';
-import { Input } from '@/shared/components/ui/input';
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
 import { Eye, EyeOff } from 'lucide-react';
 
 // Import thêm hooks và action

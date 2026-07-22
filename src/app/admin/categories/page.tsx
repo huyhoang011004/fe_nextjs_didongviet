@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useCategory } from './useCategory';
 import { CategoryHeader } from '@/app/admin/categories/_category-components/CategoryHeader';
 import { CategoryFilters } from '@/app/admin/categories/_category-components/CategoryFilters';

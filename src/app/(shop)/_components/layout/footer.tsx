@@ -2,7 +2,7 @@ import {
   CONTACT_INFO,
   MENU_CATEGORIES,
   CUSTOMER_SERVICES,
-} from '@/shared/constants';
+} from '@/constants';
 import Link from 'next/link';
 import {
   FaFacebookF,

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { getCurrentUser } from '@/shared/service/accountService';
+import { getCurrentUser } from '@/service/accountService';
 import { User } from '@/types/auth';
 import { Voucher, HSSVTier } from '@/types/voucher';
 import {

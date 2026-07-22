@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Layers3, Image as ImageIcon, Trash2, Video, Plus } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { CategorySelectDropdown } from '@/app/admin/_components/shared/CategorySelectDropdown';
 
 const getBackendUrl = (url: string) => {

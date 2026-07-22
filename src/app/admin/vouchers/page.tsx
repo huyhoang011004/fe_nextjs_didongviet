@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useVoucher } from './useVoucher';
 import { VoucherFilters } from '@/app/admin/vouchers/_voucher-components/VoucherFilters';
 import { VoucherHeader } from '@/app/admin/vouchers/_voucher-components/VoucherHeader';

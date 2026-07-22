@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye, FolderOpen } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { StudentProfile } from '@/types/student';
 
 interface StudentVerificationTableProps {

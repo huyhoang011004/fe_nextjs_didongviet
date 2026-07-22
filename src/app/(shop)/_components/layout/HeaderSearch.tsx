@@ -1,18 +1,18 @@
 'use client';
- 
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { MdClose } from 'react-icons/md';
 import { SearchIcon } from 'lucide-react';
- 
+
 import {
   Command,
   CommandInput,
   CommandList,
   CommandItem,
   CommandEmpty,
-} from '@/shared/components/ui/command';
- 
+} from '@/components/ui/command';
+
 // Định nghĩa kiểu dữ liệu gợi ý sản phẩm
 interface ProductSuggestion {
   _id: string;
@@ -24,27 +24,28 @@ interface ProductSuggestion {
   type?: string;
   category?: { name: string; slug: string };
 }
- 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
- 
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+
 export default function HeaderSearch() {
   const router = useRouter();
   const pathname = usePathname();
- 
+
   const [searchValue, setSearchValue] = useState<string>('');
   const [suggestions, setSuggestions] = useState<ProductSuggestion[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
- 
+
   const containerRef = useRef<HTMLDivElement>(null);
- 
+
   const handleSearchSubmit = () => {
     if (searchValue.trim()) {
       setOpenDropdown(false);
       router.push(`/search?q=${encodeURIComponent(searchValue.trim())}`);
     }
   };
- 
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -64,7 +65,7 @@ export default function HeaderSearch() {
       setOpenDropdown(false);
     }
   }, [pathname]);
- 
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (!searchValue.trim()) {
@@ -73,7 +74,7 @@ export default function HeaderSearch() {
         setLoading(false);
         return;
       }
- 
+
       setLoading(true);
       setOpenDropdown(true);
       try {
@@ -86,13 +87,13 @@ export default function HeaderSearch() {
             },
           },
         );
- 
+
         if (!response.ok) {
           throw new Error('Không thể kết nối máy chủ');
         }
- 
+
         const resData = await response.json();
- 
+
         if (resData?.success) {
           const data: ProductSuggestion[] = resData.data || [];
           setSuggestions(data);
@@ -104,10 +105,10 @@ export default function HeaderSearch() {
         setLoading(false);
       }
     }, 300);
- 
+
     return () => clearTimeout(delayDebounceFn);
   }, [searchValue]);
- 
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -120,7 +121,7 @@ export default function HeaderSearch() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
- 
+
   return (
     <div
       ref={containerRef}
@@ -140,7 +141,7 @@ export default function HeaderSearch() {
               placeholder='Bạn muốn mua gì?'
               className='w-full h-full border-none bg-transparent text-xs md:text-sm text-slate-900 placeholder:text-slate-400 pr-20 md:pr-24'
             />
- 
+
             {openDropdown && (
               <div className='absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden max-h-[380px] overflow-y-auto w-full'>
                 <CommandList>
@@ -149,19 +150,19 @@ export default function HeaderSearch() {
                       Đang tìm kiếm sản phẩm phù hợp...
                     </div>
                   )}
- 
+
                   {!loading && suggestions.length === 0 && (
                     <CommandEmpty className='p-4 text-center text-xs text-slate-400'>
                       Không tìm thấy sản phẩm nào phù hợp.
                     </CommandEmpty>
                   )}
- 
+
                   {!loading && suggestions.length > 0 && (
                     <div className='p-2'>
                       <div className='px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider'>
                         Gợi ý sản phẩm tìm được
                       </div>
- 
+
                       {suggestions.map((product) => (
                         <CommandItem
                           key={product._id}
@@ -181,10 +182,10 @@ export default function HeaderSearch() {
                               }
                               alt={product.name}
                               className='w-full h-full object-cover'
-                              referrerPolicy="no-referrer"
+                              referrerPolicy='no-referrer'
                             />
                           </div>
- 
+
                           <div className='flex-1 min-w-0'>
                             <h4 className='text-xs md:text-sm font-medium text-slate-800 truncate'>
                               {product.name}
@@ -211,7 +212,7 @@ export default function HeaderSearch() {
               </div>
             )}
           </Command>
- 
+
           {searchValue && (
             <button
               type='button'
@@ -226,7 +227,7 @@ export default function HeaderSearch() {
               <MdClose size={13} />
             </button>
           )}
- 
+
           <button
             type='button'
             onClick={handleSearchSubmit}

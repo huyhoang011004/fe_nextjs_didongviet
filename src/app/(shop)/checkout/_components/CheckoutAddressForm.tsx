@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { MapPin } from 'lucide-react';
-import { Input } from '@/shared/components/ui/input';
+import { Input } from '@/components/ui/input';
 import { VIETNAM_PROVINCES } from './checkout-utils';
 
 interface CheckoutAddressFormProps {

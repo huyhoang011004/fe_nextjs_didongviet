@@ -2,16 +2,16 @@
 
 import { useActionState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { cn } from '@/shared/lib/utils';
-import { Button } from '@/shared/components/ui/button';
-import { Card, CardContent } from '@/shared/components/ui/card';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from '@/shared/components/ui/field';
-import { Input } from '@/shared/components/ui/input';
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
 import { forgotPasswordAction } from './actions';
 import { AlertCircle, CheckCircle2, ArrowLeft } from 'lucide-react';
 

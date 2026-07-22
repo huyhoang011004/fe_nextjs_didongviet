@@ -19,7 +19,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { useCartStore } from '@/app/(shop)/cart/useCartStore';
 import CartItem from './_components/CartItem';
 import VoucherList from './_components/VoucherList';

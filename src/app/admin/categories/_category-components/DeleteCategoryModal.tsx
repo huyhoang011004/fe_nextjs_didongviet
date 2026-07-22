@@ -1,5 +1,5 @@
 import { ShieldAlert } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Category } from '@/types/product';
 
 interface DeleteCategoryModalProps {

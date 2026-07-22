@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
-import { Input } from '@/shared/components/ui/input';
+import { Input } from '@/components/ui/input';
 import { Category } from '@/types/product';
 import { CategorySelectDropdown } from '@/app/admin/_components/shared/CategorySelectDropdown'; // Đường dẫn có thể điều chỉnh tùy thuộc thư mục thực tế của bạn
 

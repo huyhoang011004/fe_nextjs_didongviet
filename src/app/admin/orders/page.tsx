@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useOrder } from './useOrder';
 import { OrderHeader } from '@/app/admin/orders/_order-components/OrderHeader';
 import { OrderFilters } from '@/app/admin/orders/_order-components/OrderFilters';

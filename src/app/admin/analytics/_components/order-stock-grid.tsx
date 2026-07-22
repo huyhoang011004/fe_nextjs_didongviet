@@ -1,7 +1,7 @@
 'use client';
 
 import { Clock, TrendingUp, Package, AlertTriangle, Warehouse } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface OrderStockGridProps {
     orderStatus: any;

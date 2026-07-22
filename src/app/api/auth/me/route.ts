@@ -1,4 +1,4 @@
-import { fetchWithAuth } from '@/shared/lib/api';
+import { fetchWithAuth } from '@/lib/api';
 import { NextRequest, NextResponse } from 'next/server';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';

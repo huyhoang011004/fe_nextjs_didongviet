@@ -2,13 +2,13 @@
 
 import { useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from '@/shared/components/ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 
 // Lấy ID của danh mục cha (hỗ trợ cả dạng string và object)
 const getParentId = (c: any) => {

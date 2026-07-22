@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useContact } from './useContact';
 import { ContactHeader } from '@/app/admin/contacts/_contact-components/ContactHeader';
 import { ContactFilters } from '@/app/admin/contacts/_contact-components/ContactFilters';

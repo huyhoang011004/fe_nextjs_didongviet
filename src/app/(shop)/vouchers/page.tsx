@@ -12,7 +12,7 @@ import {
   Tag,
   Scissors
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 const formatVND = (num: number) => {
   return new Intl.NumberFormat('vi-VN', {

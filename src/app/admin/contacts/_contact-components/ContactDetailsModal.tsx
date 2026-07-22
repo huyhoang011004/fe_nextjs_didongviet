@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Contact } from '@/types/contact';
 import { User } from '@/types/auth';
 

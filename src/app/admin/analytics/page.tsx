@@ -14,13 +14,13 @@ import {
   CalendarDays,
   FileSpreadsheet,
 } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from '@/shared/components/ui/card';
+} from '@/components/ui/card';
 import { BusinessCharts } from '@/app/admin/analytics/_components/business-charts';
 import DateRangePicker from '@/app/admin/analytics/_components/date-range-picker';
 import StatsCards from '@/app/admin/analytics/_components/stats-cards';

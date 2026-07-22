@@ -1,4 +1,4 @@
-import { fetchWithAuth } from '@/shared/lib/api';
+import { fetchWithAuth } from '@/lib/api';
 
 export type ResponseState = {
   success: boolean;

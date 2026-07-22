@@ -1,14 +1,14 @@
 'use client';
 
 import { Search, MapPin, Tag, ChevronDown } from 'lucide-react';
-import { Input } from '@/shared/components/ui/input';
+import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from '@/shared/components/ui/dropdown-menu';
-import { Button } from '@/shared/components/ui/button';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 import { CategorySelectDropdown } from '@/app/admin/_components/shared/CategorySelectDropdown';
 
 interface ProductFiltersProps {

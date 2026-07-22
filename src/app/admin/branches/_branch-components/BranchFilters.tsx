@@ -1,7 +1,7 @@
 'use client';
 
 import { Search } from 'lucide-react';
-import { Input } from '@/shared/components/ui/input';
+import { Input } from '@/components/ui/input';
 
 interface BranchFiltersProps {
   branchSearch: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { Eye, EyeOff, Edit, Trash2, ChevronLeft, ChevronRight, FolderOpen } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface ProductTableProps {
   products: any[];

@@ -1,7 +1,7 @@
 'use client';
 
 import { X, MapPin, CreditCard, ShoppingBag, DollarSign, Calendar, Truck, AlertTriangle, Check, PackageCheck, Store, ArrowRightLeft, Hash } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface OrderDetailsModalProps {
   isOpen: boolean;

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Ticket, Percent, Clock, AlertCircle, Check, Copy, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { fetchVouchers } from '../../cart/cart-actions';
 
 const formatVND = (num: number) => {

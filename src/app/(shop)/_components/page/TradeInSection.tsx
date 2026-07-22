@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { RotateCw, ArrowRight, Star } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface TradeInSectionProps {
   loading: boolean;

@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useAccount } from './useAccount';
 import { AccountHeader } from '@/app/admin/accounts/_account-components/AccountHeader';
 import { AccountFilters } from '@/app/admin/accounts/_account-components/AccountFilters';

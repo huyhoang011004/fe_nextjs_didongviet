@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Calendar, ChevronRight } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 import { QuickRange } from '../useAnalytics';
 

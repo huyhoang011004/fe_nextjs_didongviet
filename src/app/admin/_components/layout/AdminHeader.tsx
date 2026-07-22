@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Menu, X, LogOut } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 export interface UserProfile {
   _id: string;

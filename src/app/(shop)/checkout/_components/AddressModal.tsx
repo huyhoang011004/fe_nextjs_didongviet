@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { VIETNAM_PROVINCES } from './checkout-utils';
 
 // We import Input and Button locally to match project UI
-import { Button } from '@/shared/components/ui/button';
-import { Input as CustomInput } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input as CustomInput } from '@/components/ui/input';
 
 interface AddressModalProps {
   showAddressModal: boolean;

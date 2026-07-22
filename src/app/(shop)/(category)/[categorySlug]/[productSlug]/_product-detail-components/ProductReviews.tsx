@@ -2,7 +2,7 @@
 
 import { Star, ThumbsUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { fetchProductReviews } from '../product-detail-actions';
 
 interface ProductReviewsProps {

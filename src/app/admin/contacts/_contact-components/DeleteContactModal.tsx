@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldAlert } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Contact } from '@/types/contact';
 
 interface DeleteContactModalProps {

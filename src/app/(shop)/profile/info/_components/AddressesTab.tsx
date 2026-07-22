@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, Plus, MapPin, Home, Trash2, Check } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface AddressesTabProps {
   user: any;

@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useBranch } from './useBranch';
 import { BranchHeader } from '@/app/admin/branches/_branch-components/BranchHeader';
 import { BranchFilters } from '@/app/admin/branches/_branch-components/BranchFilters';

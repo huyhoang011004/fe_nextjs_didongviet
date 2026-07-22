@@ -1,7 +1,7 @@
 import React from 'react';
 import { Lock, Eye, EyeOff } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface PasswordTabProps {
   oldPassword: string;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { StudentProfile } from '@/types/student';
-import { resolveImageUrl } from '@/shared/lib/utils';
+import { resolveImageUrl } from '@/lib/utils';
 
 interface StudentVerificationDetailsModalProps {
   isOpen: boolean;

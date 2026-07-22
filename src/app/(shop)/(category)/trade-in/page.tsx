@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronRight, RotateCw, Star, Info, ShoppingBag, Check } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { fetchShopTradeIn, fetchShopProducts } from '../../shop-actions';
 
 // Chuẩn hóa định dạng hiển thị tiền tệ VNĐ

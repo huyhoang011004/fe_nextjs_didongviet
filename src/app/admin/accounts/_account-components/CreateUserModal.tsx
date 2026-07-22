@@ -1,5 +1,5 @@
-import { Input } from '@/shared/components/ui/input';
-import { Button } from '@/shared/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 interface CreateUserModalProps {
   isOpen: boolean;

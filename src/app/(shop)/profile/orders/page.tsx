@@ -5,7 +5,7 @@ import OrderTabs from './_components/OrderTabs';
 import OrderCard from './_components/OrderCard';
 import OrderDetailModal from './_components/OrderDetailModal';
 import { Package, AlertCircle, CheckCircle, RefreshCcw } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const formatVND = (num: number) => {

@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/shared/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useStudentVerification } from './useStudentVerification';
 import { StudentVerificationHeader } from '@/app/admin/student-verifications/_student-verification-components/StudentVerificationHeader';
 import { StudentVerificationFilters } from '@/app/admin/student-verifications/_student-verification-components/StudentVerificationFilters';

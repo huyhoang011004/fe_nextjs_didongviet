@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { Info, CheckCircle, AlertCircle } from 'lucide-react';
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { useProductDetail } from './useProductDetail';
 import ProductBreadcrumb from './_product-detail-components/ProductBreadcrumb';
 import ProductGallery from './_product-detail-components/ProductGallery';
