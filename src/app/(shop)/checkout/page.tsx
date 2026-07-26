@@ -123,10 +123,11 @@ function CheckoutContent() {
   useEffect(() => {
     async function loadData() {
       try {
-        const [profileRes, branchesRes, vouchersRes] = await Promise.all([
+        const [profileRes, branchesRes, vouchersRes, flashSaleRes] = await Promise.all([
           fetch('/api/auth/me').then((r) => r.json()),
           fetch(`${API_URL}/branches`).then((r) => r.json()),
-          fetchVouchers()
+          fetchVouchers(),
+          fetch(`${API_URL}/flash-sales/current`, { cache: 'no-store' }).then((r) => r.json()).catch(() => null)
         ]);
 
         if (profileRes.success && profileRes.data) {
@@ -173,6 +174,18 @@ function CheckoutContent() {
               prod.imageUrl ||
               '/placeholder-product.png';
 
+            let currentSalePrice = activeVariant.salePrice || activeVariant.price || prod.price || 0;
+
+            // Cập nhật giá flash sale nếu có
+            if (flashSaleRes?.success && flashSaleRes.data) {
+              const fsProduct = flashSaleRes.data.products?.find((p: any) => 
+                String(p.product?._id || p.product) === String(prod._id)
+              );
+              if (fsProduct && fsProduct.flashSalePrice) {
+                currentSalePrice = fsProduct.flashSalePrice;
+              }
+            }
+
             const newItem = {
               product: prod._id,
               variant: activeVariant._id || 'default',
@@ -181,8 +194,8 @@ function CheckoutContent() {
                 ? rawThumb
                 : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${rawThumb}`,
               quantity: qty,
-              price: activeVariant.price || prod.price || 0,
-              salePrice: activeVariant.salePrice || activeVariant.price || prod.price || 0,
+              price: currentSalePrice,
+              salePrice: currentSalePrice,
               selectedColor: activeVariant.color || '',
               selectedStorage: activeVariant.ram && activeVariant.rom
                 ? `${activeVariant.ram}/${activeVariant.rom}`

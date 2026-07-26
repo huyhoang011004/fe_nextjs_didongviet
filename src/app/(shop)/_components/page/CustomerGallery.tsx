@@ -1,7 +1,9 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 export default function CustomerGallery() {
-  const images = [
+  const [images, setImages] = useState<any[]>([
     {
       url: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=400&q=80',
       caption: 'Nghệ sĩ tin dùng sản phẩm chính hãng',
@@ -22,7 +24,22 @@ export default function CustomerGallery() {
       url: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=400&q=80',
       caption: 'Khách hàng D.Member nhận ưu đãi',
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    async function load() {
+      const { fetchShopBanners } = await import('@/app/(shop)/shop-actions');
+      const res = await fetchShopBanners('customer_gallery');
+      if (res?.data?.length > 0) {
+        setImages(res.data.map((b: any) => ({
+          url: b.imageUrl,
+          caption: b.title,
+          link: b.link
+        })));
+      }
+    }
+    load();
+  }, []);
 
   return (
     <section className='space-y-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-5 shadow-xs'>
@@ -37,9 +54,10 @@ export default function CustomerGallery() {
 
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5'>
         {images.map((img, idx) => (
-          <div
+          <a
             key={idx}
-            className='rounded-xl overflow-hidden relative aspect-4/3 group border border-slate-100 dark:border-slate-800 shadow-xs'
+            href={img.link || '#'}
+            className='block rounded-xl overflow-hidden relative aspect-4/3 group border border-slate-100 dark:border-slate-800 shadow-xs'
           >
             <img
               src={img.url}
@@ -50,7 +68,7 @@ export default function CustomerGallery() {
             <span className='absolute bottom-2.5 left-2.5 right-2.5 text-[9px] font-bold text-white text-center drop-shadow-md leading-tight line-clamp-1'>
               {img.caption}
             </span>
-          </div>
+          </a>
         ))}
       </div>
     </section>

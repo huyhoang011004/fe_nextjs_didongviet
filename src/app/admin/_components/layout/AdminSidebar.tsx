@@ -23,6 +23,7 @@ import {
   Megaphone,
   X, // Thêm nút đóng nhanh trên Mobile
   Zap,
+  Image,
 } from 'lucide-react';
 import { UserProfile } from './AdminHeader';
 import { MdHeadset } from 'react-icons/md';
@@ -121,6 +122,12 @@ export function AdminSidebar({
           title: 'Quản lý Flash Sale',
           href: '/admin/flashsales',
           icon: Zap,
+          isAdminOnly: true,
+        },
+        {
+          title: 'Quản lý Banner',
+          href: '/admin/banners',
+          icon: Image,
           isAdminOnly: true,
         },
       ],

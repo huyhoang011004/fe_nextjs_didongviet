@@ -68,3 +68,17 @@ export async function fetchProductNews(productId: string, limit: number = 4) {
     return null;
   }
 }
+
+export async function fetchCurrentFlashSale() {
+  try {
+    const res = await fetch(`${API_URL}/flash-sales/current`);
+    if (res.ok) {
+      return await res.json();
+    }
+    return null;
+  } catch (err) {
+    console.error('fetchCurrentFlashSale error:', err);
+    return null;
+  }
+}
+

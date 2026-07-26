@@ -262,6 +262,12 @@ export default function AdminFlashSalesPage() {
       return;
     }
 
+    const invalidProducts = selectedProducts.filter(p => Number(p.flashSalePrice) > Number(p.originalPrice));
+    if (invalidProducts.length > 0) {
+      alert(`Có ${invalidProducts.length} sản phẩm có giá Flash Sale cao hơn giá gốc. Vui lòng kiểm tra lại!`);
+      return;
+    }
+
     const payload = {
       name: formData.name,
       startDate: new Date(formData.startDate).toISOString(),
@@ -540,9 +546,19 @@ export default function AdminFlashSalesPage() {
                           </div>
 
                           <div className="grid grid-cols-3 gap-3">
-                            <div className="space-y-1">
-                              <label className="text-[9px] font-black text-slate-500 uppercase">
-                                Giá Flash Sale *
+                            <div className="space-y-1 relative group">
+                              <label className="text-[9px] font-black text-slate-500 uppercase flex justify-between">
+                                <span>Giá Flash Sale *</span>
+                                {p.originalPrice > p.flashSalePrice && (
+                                  <span className="text-green-500 font-bold lowercase">
+                                    (giảm {formatVND(p.originalPrice - p.flashSalePrice)})
+                                  </span>
+                                )}
+                                {p.flashSalePrice > p.originalPrice && (
+                                  <span className="text-red-500 font-bold lowercase">
+                                    (lỗi: cao hơn gốc)
+                                  </span>
+                                )}
                               </label>
                               <input
                                 type="number"
@@ -552,7 +568,7 @@ export default function AdminFlashSalesPage() {
                                 onChange={(e) =>
                                   handleUpdateProductVal(p.product, 'flashSalePrice', Number(e.target.value))
                                 }
-                                className="w-full text-[10px] font-bold px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 dark:bg-slate-950 outline-none focus:border-didongviet-red"
+                                className={`w-full text-[10px] font-bold px-2.5 py-1.5 rounded-lg border outline-none ${p.flashSalePrice > p.originalPrice ? 'border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 dark:bg-slate-950 focus:border-didongviet-red'}`}
                               />
                             </div>
 

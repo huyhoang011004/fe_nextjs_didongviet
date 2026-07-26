@@ -144,6 +144,7 @@ export default function HeroSection({
   allProducts = [],
 }: HeroSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentRightSlide, setCurrentRightSlide] = useState(0);
   const [activeMenu, setActiveMenu] = useState<any | null>(null);
 
   const sidebarMenuItems = [
@@ -296,82 +297,39 @@ export default function HeroSection({
       .replace('₫', 'đ');
   };
 
-  const banners = [
-    {
-      id: 1,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F5%2F5%2F1%2Fkv-samsung-t6-resize-824x400-copy-8.png&w=1080&q=75',
-      title: 'Samsung Galaxy T6',
-      link: '#',
-    },
-    {
-      id: 2,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F5%2F3%2F1%2Fthiaaat-kaaa-chaaa-caa-taan.jpg&w=1080&q=75',
-      title: 'Thiết Kế Đỉnh Cao',
-      link: '#',
-    },
-    {
-      id: 3,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F5%2F3%2F1%2Fxiaomi-17t-series-824x400-1.png&w=1080&q=75',
-      title: 'Xiaomi 17T Series',
-      link: '#',
-    },
-    {
-      id: 4,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F5%2F1%2F1%2F824x400-15-1.png&w=1080&q=75',
-      title: 'Khuyến mãi đặc quyền',
-      link: '#',
-    },
-    {
-      id: 5,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F5%2F1%2F1%2Fmarshall-824x400-1-2.png&w=1080&q=75',
-      title: 'Marshall Audio',
-      link: '#',
-    },
-    {
-      id: 6,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F4%2F31%2F1%2Fdeal-bear-sieu-dinh---rinh-bep-thong-minh-824x400.jpg&w=1080&q=75',
-      title: 'Deal Bear Siêu Đỉnh',
-      link: '#',
-    },
-  ];
+  const [banners, setBanners] = useState<any[]>([]);
+  const [rightBanners, setRightBanners] = useState<any[]>([]);
 
-  const rightBanners = [
-    {
-      id: 1,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F4%2F14%2F1%2F20260514-173137-1.png&w=1080&q=75',
-      title: 'Khuyến mãi hot',
-      link: '#',
-    },
-    {
-      id: 2,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F5%2F2%2F1%2Fsnapedit-1780387228986.png&w=1080&q=75',
-      title: 'Ưu đãi lớn',
-      link: '#',
-    },
-    {
-      id: 3,
-      image:
-        'https://didongviet.vn/_next/image/?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fbanners%2F2026%2F3%2F8%2F1%2F830-x-525.png&w=1080&q=75',
-      title: 'Siêu sale cuối tuần',
-      link: '#',
-    },
-  ];
+  useEffect(() => {
+    async function loadBanners() {
+      const { fetchShopBanners } = await import('@/app/(shop)/shop-actions');
+      const resCarousel = await fetchShopBanners('carousel');
+      if (resCarousel?.data) setBanners(resCarousel.data);
+      
+      const resRight = await fetchShopBanners('right');
+      if (resRight?.data) setRightBanners(resRight.data);
+    }
+    loadBanners();
+  }, []);
 
   // Tự động xoay banner sau 5s
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % banners.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    if (banners.length > 0) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % banners.length);
+      }, 5000);
+      return () => clearInterval(timer);
+    }
   }, [banners.length]);
+
+  useEffect(() => {
+    if (rightBanners.length > 0) {
+      const timer2 = setInterval(() => {
+        setCurrentRightSlide((prev) => (prev + 1) % rightBanners.length);
+      }, 5000);
+      return () => clearInterval(timer2);
+    }
+  }, [rightBanners.length]);
 
   return (
     <>
@@ -535,7 +493,7 @@ export default function HeroSection({
                 className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
               >
                 <img
-                  src={b.image}
+                  src={b.imageUrl || b.image}
                   alt={b.title || 'Promo Banner'}
                   className='w-full h-full object-fill'
                 />
@@ -574,21 +532,52 @@ export default function HeroSection({
             </div>
           </div>
 
-          {/* CỘT PHẢI: 3 DỌC BANNER QUẢNG CÁO XẾP DỌC */}
-          <div className='lg:col-span-1 flex flex-col gap-2.5 h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px]'>
-            {rightBanners.map((banner) => (
+          {/* CỘT PHẢI: BANNER QUẢNG CÁO DẠNG CUỘN */}
+          <div className='lg:col-span-1 relative h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] rounded-2xl overflow-hidden shadow-sm border border-slate-100 group'>
+            {rightBanners.map((b, idx) => (
               <Link
-                key={banner.id}
-                href={banner.link}
-                className='flex-1 rounded-2xl overflow-hidden relative border border-slate-100 group shadow-xs hover:shadow-md transition-shadow'
+                key={b.id || idx}
+                href={b.link || '#'}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentRightSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
               >
                 <img
-                  src={banner.image}
-                  alt={banner.title}
-                  className='w-full h-full object-fill transition-transform duration-500 group-hover:scale-105'
+                  src={b.imageUrl || b.image}
+                  alt={b.title || 'Promo Banner'}
+                  className='w-full h-full object-fill'
                 />
               </Link>
             ))}
+
+            {/* Nav arrows */}
+            <button
+              onClick={() =>
+                setCurrentRightSlide(
+                  (prev) => (prev - 1 + rightBanners.length) % rightBanners.length,
+                )
+              }
+              className='absolute left-3 top-1/2 -translate-y-1/2 z-20 h-8 w-8 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center border-none cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity'
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={() =>
+                setCurrentRightSlide((prev) => (prev + 1) % rightBanners.length)
+              }
+              className='absolute right-3 top-1/2 -translate-y-1/2 z-20 h-8 w-8 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center border-none cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity'
+            >
+              <ChevronRight size={16} />
+            </button>
+
+            {/* Slide dots */}
+            <div className='absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5'>
+              {rightBanners.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentRightSlide(idx)}
+                  className={`h-1.5 rounded-full border-none cursor-pointer transition-all ${idx === currentRightSlide ? 'w-5 bg-white' : 'w-1.5 bg-white/50'}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

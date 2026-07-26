@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { fetchProductDetail, fetchBranches, fetchRelatedProducts } from './product-detail-actions';
+import { fetchProductDetail, fetchBranches, fetchRelatedProducts, fetchCurrentFlashSale } from './product-detail-actions';
 import { useCartStore } from '@/app/(shop)/cart/useCartStore';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
@@ -43,13 +43,33 @@ export function useProductDetail(id: string) {
     async function loadData() {
       try {
         setLoading(true);
-        const [productRes, branchesRes] = await Promise.all([
+        const [productRes, branchesRes, flashSaleRes] = await Promise.all([
           fetchProductDetail(id),
           fetchBranches(),
+          fetchCurrentFlashSale(),
         ]);
 
         if (productRes && productRes.success) {
           const prod = productRes.data;
+          
+          // Kiểm tra xem sản phẩm có nằm trong Flash Sale đang diễn ra không
+          if (flashSaleRes && flashSaleRes.success && flashSaleRes.data && flashSaleRes.data.products) {
+            const fsProduct = flashSaleRes.data.products.find((p: any) => 
+              (p.product?._id || p.product) === prod._id
+            );
+            if (fsProduct && fsProduct.flashSalePrice) {
+              // Ghi đè salePrice của tất cả các variant (hoặc variant đang active) bằng giá flash sale
+              if (prod.variants && prod.variants.length > 0) {
+                prod.variants = prod.variants.map((v: any) => ({
+                  ...v,
+                  salePrice: fsProduct.flashSalePrice,
+                }));
+              } else {
+                prod.salePrice = fsProduct.flashSalePrice;
+              }
+            }
+          }
+
           setProduct(prod);
 
           const rawThumb =

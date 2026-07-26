@@ -2,30 +2,46 @@
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 // 1. BANNER NGANG DÀI
 export function HorizontalBanner() {
+  const [banner, setBanner] = useState<any>(null);
+
+  useEffect(() => {
+    async function load() {
+      const { fetchShopBanners } = await import('@/app/(shop)/shop-actions');
+      const res = await fetchShopBanners('horizontal');
+      if (res?.data?.length > 0) {
+        setBanner(res.data[0]);
+      }
+    }
+    load();
+  }, []);
+
   return (
     <div className='w-full rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-shadow relative h-[90px] sm:h-[120px]'>
-      <Link href='#'>
+      <Link href={banner?.link || '#'}>
         <div
           className='w-full h-full bg-cover bg-center'
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80')`,
+            backgroundImage: banner?.imageUrl ? `url('${banner.imageUrl}')` : `linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80')`,
           }}
         />
-        <div className='absolute inset-0 flex flex-col justify-center px-6 sm:px-10 text-white space-y-1'>
-          <span className='text-[8px] sm:text-[9px] font-black text-yellow-300 uppercase tracking-widest block'>
-            KHUYẾN MÃI LỚN
-          </span>
-          <h3 className='text-xs sm:text-base font-extrabold tracking-tight leading-snug'>
-            TUẦN LỄ LÊN ĐỜI SMARTPHONE - TRỢ GIÁ ĐẾN 4.000.000Đ
-          </h3>
-          <p className='text-[8px] sm:text-[10px] text-slate-200 font-medium hidden sm:block'>
-            Áp dụng cho chủ thẻ tín dụng và thành viên D.Member khi thu cũ đổi
-            mới.
-          </p>
-        </div>
+        {!banner?.imageUrl && (
+          <div className='absolute inset-0 flex flex-col justify-center px-6 sm:px-10 text-white space-y-1'>
+            <span className='text-[8px] sm:text-[9px] font-black text-yellow-300 uppercase tracking-widest block'>
+              KHUYẾN MÃI LỚN
+            </span>
+            <h3 className='text-xs sm:text-base font-extrabold tracking-tight leading-snug'>
+              TUẦN LỄ LÊN ĐỜI SMARTPHONE - TRỢ GIÁ ĐẾN 4.000.000Đ
+            </h3>
+            <p className='text-[8px] sm:text-[10px] text-slate-200 font-medium hidden sm:block'>
+              Áp dụng cho chủ thẻ tín dụng và thành viên D.Member khi thu cũ đổi
+              mới.
+            </p>
+          </div>
+        )}
       </Link>
     </div>
   );
@@ -33,7 +49,20 @@ export function HorizontalBanner() {
 
 // 2. LƯỚI 4 BANNER ĐỨNG ĐẶC QUYỀN
 export function GridBanners() {
-  const banners = [
+  const [apiBanners, setApiBanners] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function load() {
+      const { fetchShopBanners } = await import('@/app/(shop)/shop-actions');
+      const res = await fetchShopBanners('grid');
+      if (res?.data?.length > 0) {
+        setApiBanners(res.data);
+      }
+    }
+    load();
+  }, []);
+
+  const fallbackBanners = [
     {
       id: 1,
       image:
@@ -42,6 +71,7 @@ export function GridBanners() {
       tagline: 'Trợ giá thu cũ 4,5 Triệu',
       color: 'from-orange-500/20 to-red-600/20',
       textColor: 'text-orange-500',
+      link: '#',
     },
     {
       id: 2,
@@ -51,6 +81,7 @@ export function GridBanners() {
       tagline: 'Giảm thêm đến 1,5%',
       color: 'from-purple-500/20 to-indigo-600/20',
       textColor: 'text-purple-600',
+      link: '#',
     },
     {
       id: 3,
@@ -60,6 +91,7 @@ export function GridBanners() {
       tagline: 'Kỳ hạn đến 12 tháng',
       color: 'from-blue-500/20 to-cyan-600/20',
       textColor: 'text-blue-600',
+      link: '#',
     },
     {
       id: 4,
@@ -69,15 +101,25 @@ export function GridBanners() {
       tagline: 'Miễn phí giao hàng 1H',
       color: 'from-emerald-500/20 to-teal-600/20',
       textColor: 'text-emerald-600',
+      link: '#',
     },
   ];
 
+  const displayBanners = apiBanners.length > 0 ? apiBanners.map((b, i) => ({
+    id: b._id,
+    image: b.imageUrl,
+    title: 'Đặc Quyền',
+    tagline: b.title,
+    textColor: 'text-white',
+    link: b.link || '#'
+  })) : fallbackBanners;
+
   return (
     <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
-      {banners.map((b) => (
+      {displayBanners.map((b) => (
         <Link
           key={b.id}
-          href='#'
+          href={b.link || '#'}
           className='h-[160px] sm:h-[200px] rounded-2xl overflow-hidden relative border border-slate-100 dark:border-slate-800 shadow-xs hover:shadow-md transition-shadow group'
         >
           <div
@@ -106,7 +148,7 @@ export function GridBanners() {
 
 // 3. LOGO ĐỐI TÁC THƯƠNG HIỆU LIÊN KẾT
 export function PartnerLogos() {
-  const partners = [
+  const [partners, setPartners] = useState<any[]>([
     {
       name: 'Apple',
       colorClass:
@@ -152,7 +194,23 @@ export function PartnerLogos() {
       colorClass:
         'text-red-650 dark:text-red-400 bg-red-50 dark:bg-red-950/20 border-red-100 dark:border-red-900/40 hover:bg-red-100/50',
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    async function load() {
+      const { fetchShopBanners } = await import('@/app/(shop)/shop-actions');
+      const res = await fetchShopBanners('partner_logos');
+      if (res?.data?.length > 0) {
+        setPartners(res.data.map((b: any) => ({
+          name: b.title,
+          imageUrl: b.imageUrl,
+          link: b.link,
+          colorClass: 'bg-white border-slate-100 hover:shadow-sm'
+        })));
+      }
+    }
+    load();
+  }, []);
 
   return (
     <div className='bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-5 shadow-xs'>
@@ -161,14 +219,19 @@ export function PartnerLogos() {
       </span>
       <div className='flex flex-wrap items-center justify-center gap-3 md:gap-4'>
         {partners.map((partner, idx) => (
-          <div
+          <a
             key={idx}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all hover:-translate-y-0.5 hover:shadow-sm cursor-pointer ${partner.colorClass}`}
+            href={partner.link || '#'}
+            className={`flex items-center justify-center min-w-[80px] h-10 px-3 py-1.5 rounded-xl border transition-all hover:-translate-y-0.5 hover:shadow-sm cursor-pointer ${partner.colorClass} overflow-hidden`}
           >
-            <span className='text-[10px] sm:text-xs font-black uppercase tracking-tight'>
-              {partner.name}
-            </span>
-          </div>
+            {partner.imageUrl ? (
+              <img src={partner.imageUrl} alt={partner.name} className="max-h-full max-w-full object-contain" />
+            ) : (
+              <span className='text-[10px] sm:text-xs font-black uppercase tracking-tight'>
+                {partner.name}
+              </span>
+            )}
+          </a>
         ))}
       </div>
     </div>

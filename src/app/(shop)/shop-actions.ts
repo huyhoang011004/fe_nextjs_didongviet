@@ -64,3 +64,17 @@ export async function fetchShopFlashSale() {
     return null;
   }
 }
+
+export async function fetchShopBanners(position?: string) {
+  try {
+    const url = position ? `${API_URL}/banners?isActive=true&position=${position}` : `${API_URL}/banners?isActive=true`;
+    const res = await fetch(url);
+    if (res.ok) {
+      return await res.json();
+    }
+    return null;
+  } catch (err) {
+    console.error('fetchShopBanners error:', err);
+    return null;
+  }
+}
