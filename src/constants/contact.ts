@@ -1,10 +1,10 @@
 export const CONTACT_INFO = {
-  hotline: '0888.765.650',
+  hotline: '0888.765.xxx',
   email: 'nvhhoang1@gmail.com',
-  website: 'https://didongviet.vn',
+  website: 'https://fe-nextjs-didongviet.vercel.app/',
   company: 'Công Ty Cổ phần Công Nghệ Di Động Việt',
   address:
-    'Số 168, Ngõ 49, Phố Triều Khúc, Phường Thanh Xuân Nam, Quận Thanh Xuân, Hà Nội',
+    'Quận Hà Đông, Hà Nội',
   business_license: '0108822906',
   representative: 'Nguyễn Văn Huy Hoàng',
   social: {
