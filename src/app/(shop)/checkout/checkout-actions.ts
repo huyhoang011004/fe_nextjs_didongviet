@@ -149,10 +149,7 @@ export async function applyVoucherCode(code: string, selectedTotalPrice: number)
 
 export async function placeOrder(payload: any) {
   try {
-    // Debug log
-    console.log('========== PLACE ORDER PAYLOAD ==========');
-    console.log(JSON.stringify(payload, null, 2));
-    console.log('=========================================');
+    // Gửi payload tạo đơn hàng
 
     const res = await fetch('/api/orders', {
       method: 'POST',
