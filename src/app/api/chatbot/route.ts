@@ -1,5 +1,5 @@
 // ==================== IMPORT ====================
-const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const BACKEND_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 // Cache dữ liệu sản phẩm (refresh mỗi 5 phút)
 let productsCache: any[] = [];

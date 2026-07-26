@@ -24,7 +24,7 @@ const getBackendUrl = (url?: string) => {
   if (url.startsWith('http') || url.startsWith('blob:') || url.startsWith('data:')) {
     return url;
   }
-  const backendBase = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1')
+  const backendBase = ((process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1')
     .replace('/api/v1', '');
   return `${backendBase}${url}`;
 };

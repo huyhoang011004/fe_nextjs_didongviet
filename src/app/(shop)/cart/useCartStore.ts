@@ -65,7 +65,7 @@ export const useCartStore = create<CartState>()(
                   product: prod._id || item.product,
                   variant: item.variantId,
                   name: prod.name || 'Sản phẩm',
-                  imageUrl: thumbnail.startsWith('http') ? thumbnail : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${thumbnail}`,
+                  imageUrl: thumbnail.startsWith('http') ? thumbnail : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${thumbnail}`,
                   quantity: item.quantity,
                   price: item.price,
                   salePrice: item.price,

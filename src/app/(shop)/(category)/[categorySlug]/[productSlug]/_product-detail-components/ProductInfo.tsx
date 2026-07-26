@@ -218,7 +218,7 @@ export default function ProductInfo({
             if (v.variantImage) {
               const imgUrl = v.variantImage.startsWith('http')
                 ? v.variantImage
-                : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${v.variantImage}`;
+                : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${v.variantImage}`;
               setActiveImage(imgUrl);
             }
           };

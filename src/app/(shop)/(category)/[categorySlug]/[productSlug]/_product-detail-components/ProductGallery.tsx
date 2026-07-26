@@ -13,7 +13,7 @@ interface ProductGalleryProps {
 }
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 function getImageUrl(url: string | undefined | null): string {
   if (!url) return '/placeholder-product.png';

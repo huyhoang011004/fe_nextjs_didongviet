@@ -68,7 +68,7 @@ export default function Header() {
     async function fetchCategories() {
       try {
         const apiUrl =
-          process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+          (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
         const res = await fetch(`${apiUrl}/categories`);
         if (res.ok) {
           const data = await res.json();

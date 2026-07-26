@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { fetchProductDetail, fetchBranches, fetchRelatedProducts, fetchCurrentFlashSale } from './product-detail-actions';
 import { useCartStore } from '@/app/(shop)/cart/useCartStore';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 function getImageUrl(url: string | undefined | null): string {
   if (!url) return '/placeholder-product.png';
@@ -119,7 +119,7 @@ export function useProductDetail(id: string) {
         name: product.name,
         imageUrl: rawThumb.startsWith('http')
           ? rawThumb
-          : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${rawThumb}`,
+          : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${rawThumb}`,
         quantity: cartQty,
         price: activeVariant.price,
         salePrice: activeVariant.salePrice || activeVariant.price,

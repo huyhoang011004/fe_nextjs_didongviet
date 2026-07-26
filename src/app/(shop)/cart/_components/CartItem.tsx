@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Minus, Plus, Trash2, ChevronDown, AlertTriangle } from 'lucide-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 export default function CartItem({
   item,
@@ -268,7 +268,7 @@ export default function CartItem({
                       >
                         {v.variantImage && (
                           <img
-                            src={v.variantImage.startsWith('http') ? v.variantImage : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${v.variantImage}`}
+                            src={v.variantImage.startsWith('http') ? v.variantImage : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${v.variantImage}`}
                             alt={v.color}
                             className='w-7 h-7 object-contain rounded bg-slate-50 border border-slate-100 shrink-0'
                           />

@@ -1,6 +1,6 @@
 import { fetchVouchers, findVoucherByCode, calcVoucherValue, applyVoucherServer } from '../cart/cart-actions';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 export async function loadCheckoutData(buyNow: boolean, productId?: string, variantId?: string, qty?: number) {
   try {
@@ -45,7 +45,7 @@ export async function loadCheckoutData(buyNow: boolean, productId?: string, vari
           name: prod.name,
           imageUrl: rawThumb.startsWith('http')
             ? rawThumb
-            : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${rawThumb}`,
+            : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${rawThumb}`,
           quantity: qty || 1,
           price: currentSalePrice,
           salePrice: currentSalePrice,

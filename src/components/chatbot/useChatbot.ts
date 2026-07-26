@@ -99,7 +99,7 @@ export function useChatbot() {
             // Fetch từng slug
             const results = await Promise.all(
                 slugs.map(async (slug) => {
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${slug}`);
+                    const res = await fetch(`${(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000')}/api/v1/products/${slug}`);
                     const json = await res.json();
                     return json.success ? json.data : json.product || null;
                 })

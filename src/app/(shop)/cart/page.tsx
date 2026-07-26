@@ -31,7 +31,7 @@ import {
   applyVoucherServer,
 } from './cart-actions';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 const formatVND = (num: number) => {
   return new Intl.NumberFormat('vi-VN', {
@@ -352,7 +352,7 @@ export default function CartPage() {
           const itemDetails = {
             imageUrl: thumbnail.startsWith('http')
               ? thumbnail
-              : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${thumbnail}`,
+              : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${thumbnail}`,
             price: newVariant.price,
             salePrice: newVariant.salePrice || newVariant.price,
             selectedColor: newVariant.color,

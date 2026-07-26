@@ -44,7 +44,7 @@ export default function TrackingPage() {
 
     setSubmitting(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+      const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
       const query = new URLSearchParams({
         orderId: formData.orderId.trim(),
         phone: formData.phone.trim(),

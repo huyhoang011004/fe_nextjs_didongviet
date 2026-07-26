@@ -20,7 +20,7 @@ export default function NewsPage() {
     async function fetchBlogs() {
       try {
         const apiUrl =
-          process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+          (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
         const res = await fetch(`${apiUrl}/blogs`);
         if (res.ok) {
           const data = await res.json();

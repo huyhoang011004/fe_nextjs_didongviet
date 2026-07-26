@@ -1,7 +1,7 @@
 import { fetchWithAuth } from '@/lib/api';
 import { NextRequest, NextResponse } from 'next/server';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 // POST /api/student-profile/update → cập nhật thông tin HSSV
 export async function POST(request: NextRequest) {

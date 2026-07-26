@@ -1,7 +1,7 @@
 import { fetchWithAuth } from '@/lib/api';
 import { NextRequest, NextResponse } from 'next/server';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 /**
  * POST /api/payments/vnpay — Tạo thanh toán VNPay

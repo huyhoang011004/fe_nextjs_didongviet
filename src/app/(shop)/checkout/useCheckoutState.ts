@@ -10,7 +10,7 @@ import {
 import { createMoMoPayment, createVNPayPayment, calculateShippingFee } from './checkout-actions';
 import { VIETNAM_PROVINCES, getBranchRegion } from './_components/checkout-utils';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 export function useCheckoutState() {
   const router = useRouter();
@@ -164,7 +164,7 @@ export function useCheckoutState() {
               name: prod.name,
               imageUrl: rawThumb.startsWith('http')
                 ? rawThumb
-                : `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000'}${rawThumb}`,
+                : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${rawThumb}`,
               quantity: qty,
               price: currentSalePrice,
               salePrice: currentSalePrice,

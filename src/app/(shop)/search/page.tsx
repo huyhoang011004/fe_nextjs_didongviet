@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight, ShoppingBag, Star } from 'lucide-react';
  
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
  
 const formatVND = (num: number) => {
   return new Intl.NumberFormat('vi-VN', {

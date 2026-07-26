@@ -31,7 +31,7 @@ import PaymentMethods from './_components/PaymentMethods';
 import PaymentSummary from './_components/PaymentSummary';
 import { useCheckoutState } from './useCheckoutState';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 
 const formatVND = (num: number) => {
   return new Intl.NumberFormat('vi-VN', {

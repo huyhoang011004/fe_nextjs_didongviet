@@ -23,7 +23,7 @@ export async function verifyOtpAction(
   }
 
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+    const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
     const response = await fetch(`${apiUrl}/auth/verify-otp`, {
       method: 'POST',
       headers: {
@@ -62,7 +62,7 @@ export async function resendOtpAction(email: string): Promise<{ success: boolean
   }
 
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+    const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
     const response = await fetch(`${apiUrl}/auth/resend-otp`, {
       method: 'POST',
       headers: {
