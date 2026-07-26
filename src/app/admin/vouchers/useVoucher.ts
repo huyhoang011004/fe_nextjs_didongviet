@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
@@ -84,8 +85,8 @@ export function useVoucher() {
   // Auto-hide alert sau 4s
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -106,10 +107,7 @@ export function useVoucher() {
       if (res.success) {
         setVouchersData(res.vouchers);
       } else {
-        setAlert({
-          type: 'error',
-          message: res.message || 'Lỗi tải danh sách voucher.',
-        });
+        toast.error(res.message || 'Lỗi tải danh sách voucher.',);
       }
     }
     setVoucherLoading(false);
@@ -165,11 +163,11 @@ export function useVoucher() {
     startCreateVoucher(async () => {
       const res = await createVoucherAction(voucherData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowCreateVoucherModal(false);
         fetchVouchers();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -188,11 +186,7 @@ export function useVoucher() {
     // NGHIỆP VỤ: Nếu voucher đã hết hạn thì không cho phép kích hoạt (isActive = true)
     const isExpired = expiryDate ? new Date(expiryDate) < new Date() : false;
     if (isExpired && isActive) {
-      setAlert({
-        type: 'error',
-        message:
-          'Mã voucher đã quá ngày hết hạn sử dụng, không thể chuyển sang trạng thái kích hoạt!',
-      });
+      toast.error('Mã voucher đã quá ngày hết hạn sử dụng, không thể chuyển sang trạng thái kích hoạt!',);
       return;
     }
 
@@ -233,11 +227,11 @@ export function useVoucher() {
     startEditVoucher(async () => {
       const res = await updateVoucherAction(selectedVoucher._id, voucherData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowEditVoucherModal(false);
         fetchVouchers();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -247,11 +241,11 @@ export function useVoucher() {
     if (!selectedVoucher) return;
     const res = await deleteVoucherAction(selectedVoucher._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteVoucherModal(false);
       fetchVouchers();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

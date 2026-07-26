@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, Image as ImageIcon, X } from 'lucide-react';
@@ -79,11 +80,11 @@ export default function BannersAdminPage() {
       if (data.success) {
         setFormData((prev) => ({ ...prev, imageUrl: data.url }));
       } else {
-        alert(data.message || 'Lỗi khi upload ảnh');
+        toast.error(data.message || 'Lỗi khi upload ảnh');
       }
     } catch (err) {
       console.error(err);
-      alert('Lỗi kết nối khi upload ảnh');
+      toast.error('Lỗi kết nối khi upload ảnh');
     } finally {
       setUploading(false);
     }
@@ -124,7 +125,7 @@ export default function BannersAdminPage() {
         // Cập nhật lại UI ngay lập tức
         setBanners((prev) => prev.filter((b) => b._id !== id));
       } else {
-        alert(res.message);
+        toast.error(res.message);
       }
     } catch (err) {
       console.error(err);
@@ -134,7 +135,7 @@ export default function BannersAdminPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.imageUrl && formData.position !== 'partner_logos') {
-      alert('Vui lòng upload ảnh banner!');
+      toast.error('Vui lòng upload ảnh banner!');
       return;
     }
 
@@ -150,11 +151,11 @@ export default function BannersAdminPage() {
         setIsFormOpen(false);
         loadBanners(); // Reload to get updated data
       } else {
-        alert(res.message);
+        toast.error(res.message);
       }
     } catch (err) {
       console.error(err);
-      alert('Lỗi hệ thống khi lưu banner');
+      toast.error('Lỗi hệ thống khi lưu banner');
     }
   };
 

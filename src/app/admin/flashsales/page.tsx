@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useState, useEffect } from 'react';
 import {
@@ -71,7 +72,7 @@ export default function AdminFlashSalesPage() {
         setTotalCount(res.totalCount);
         setCurrentPage(res.currentPage);
       } else {
-        alert(res.message || 'Lỗi khi tải danh sách Flash Sale');
+        toast.error(res.message || 'Lỗi khi tải danh sách Flash Sale');
       }
     } catch (err) {
       console.error(err);
@@ -116,7 +117,7 @@ export default function AdminFlashSalesPage() {
           ),
         );
       } else {
-        alert(res.message);
+        toast.error(res.message);
       }
     } catch (err) {
       console.error(err);
@@ -129,10 +130,10 @@ export default function AdminFlashSalesPage() {
     try {
       const res = await deleteFlashSaleAction(id);
       if (res.success) {
-        alert(res.message);
+        toast.error(res.message);
         loadFlashSales(currentPage);
       } else {
-        alert(res.message);
+        toast.error(res.message);
       }
     } catch (err) {
       console.error(err);
@@ -180,7 +181,7 @@ export default function AdminFlashSalesPage() {
         setEditingId(id);
         setIsFormOpen(true);
       } else {
-        alert(res.message || 'Không thể lấy thông tin chi tiết đợt Flash Sale');
+        toast.error(res.message || 'Không thể lấy thông tin chi tiết đợt Flash Sale');
       }
     } catch (err) {
       console.error(err);
@@ -253,18 +254,18 @@ export default function AdminFlashSalesPage() {
       .filter((s) => !isNaN(s) && s >= 0 && s <= 23);
 
     if (parsedSlots.length === 0) {
-      alert('Vui lòng nhập ít nhất một khung giờ hợp lệ (0-23)!');
+      toast.error('Vui lòng nhập ít nhất một khung giờ hợp lệ (0-23);!');
       return;
     }
 
     if (selectedProducts.length === 0) {
-      alert('Vui lòng thêm ít nhất một sản phẩm tham gia Flash Sale!');
+      toast.error('Vui lòng thêm ít nhất một sản phẩm tham gia Flash Sale!');
       return;
     }
 
     const invalidProducts = selectedProducts.filter(p => Number(p.flashSalePrice) > Number(p.originalPrice));
     if (invalidProducts.length > 0) {
-      alert(`Có ${invalidProducts.length} sản phẩm có giá Flash Sale cao hơn giá gốc. Vui lòng kiểm tra lại!`);
+      toast.error(`Có ${invalidProducts.length} sản phẩm có giá Flash Sale cao hơn giá gốc. Vui lòng kiểm tra lại!`);
       return;
     }
 
@@ -293,15 +294,15 @@ export default function AdminFlashSalesPage() {
       }
 
       if (res.success) {
-        alert(res.message);
+        toast.success(res.message);
         setIsFormOpen(false);
         loadFlashSales(currentPage);
       } else {
-        alert(res.message);
+        toast.error(res.message);
       }
     } catch (err) {
       console.error(err);
-      alert('Lỗi hệ thống khi lưu đợt Flash Sale.');
+      toast.error('Lỗi hệ thống khi lưu đợt Flash Sale.');
     } finally {
       setLoading(false);
     }

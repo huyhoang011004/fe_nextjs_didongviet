@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import {
@@ -27,8 +28,8 @@ export function useBranch() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -39,7 +40,7 @@ export function useBranch() {
     if (res.success) {
       setBranchesData(res.branches);
     } else {
-      setAlert({ type: 'error', message: res.message || 'Lỗi tải danh sách chi nhánh.' });
+      toast.error(res.message || 'Lỗi tải danh sách chi nhánh.');
     }
     setBranchLoading(false);
   };
@@ -76,11 +77,11 @@ export function useBranch() {
     startCreate(async () => {
       const res = await createBranchAction(formData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowCreateModal(false);
         fetchBranches();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -97,11 +98,11 @@ export function useBranch() {
     startEdit(async () => {
       const res = await updateBranchAction(selectedBranch._id, formData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowEditModal(false);
         fetchBranches();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -111,11 +112,11 @@ export function useBranch() {
     if (!selectedBranch) return;
     const res = await deleteBranchAction(selectedBranch._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteModal(false);
       fetchBranches();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
@@ -67,8 +68,8 @@ export function useAccount() {
   // Auto-hide alert sau 4s
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -81,10 +82,7 @@ export function useAccount() {
       setUsersTotalPages(res.totalPages);
       setUsersTotalCount(res.totalUsers);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách người dùng.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách người dùng.',);
     }
     setUserLoading(false);
   };
@@ -104,11 +102,11 @@ export function useAccount() {
     startCreateUser(async () => {
       const res = await createUserByAdminAction(null, formData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowCreateUserModal(false);
         fetchUsers();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -131,11 +129,11 @@ export function useAccount() {
     startEditUser(async () => {
       const res = await updateUserByAdminAction(selectedUser._id, updatedData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowEditUserModal(false);
         fetchUsers();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -145,11 +143,11 @@ export function useAccount() {
     if (!userToLock) return;
     const res = await softDeleteUserAction(userToLock._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowLockUserModal(false);
       fetchUsers();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
@@ -158,11 +156,11 @@ export function useAccount() {
     if (!userToDelete) return;
     const res = await hardDeleteUserAction(userToDelete._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteUserModal(false);
       fetchUsers();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

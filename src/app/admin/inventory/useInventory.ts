@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import {
@@ -106,8 +107,8 @@ export function useInventory() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -129,10 +130,7 @@ export function useInventory() {
     if (res.success) {
       setBranchesData(res.branches);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách chi nhánh.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách chi nhánh.',);
     }
     setBranchesLoading(false);
   };
@@ -144,10 +142,7 @@ export function useInventory() {
     if (res.success) {
       setCategoriesData(res.categories || []);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách danh mục.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách danh mục.',);
     }
     setCategoryLoading(false);
   };
@@ -282,10 +277,7 @@ export function useInventory() {
       setReceiptsTotalPages(res.totalPages);
       setReceiptsTotalCount(res.totalItems);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải lịch sử nhập kho.',
-      });
+      toast.error(res.message || 'Lỗi tải lịch sử nhập kho.',);
     }
     setReceiptsLoading(false);
   };
@@ -347,17 +339,11 @@ export function useInventory() {
       );
 
       if (res.success) {
-        setAlert({
-          type: 'success',
-          message: res.message || 'Cập nhật tồn kho chi nhánh thành công!',
-        });
+        toast.success(res.message || 'Cập nhật tồn kho chi nhánh thành công!',);
         setShowUpdateStockModal(false);
         fetchInventory(); // Tải lại bảng tồn kho
       } else {
-        setAlert({
-          type: 'error',
-          message: res.message || 'Cập nhật thất bại.',
-        });
+        toast.error(res.message || 'Cập nhật thất bại.',);
       }
     });
   };
@@ -376,17 +362,11 @@ export function useInventory() {
       );
 
       if (res.success) {
-        setAlert({
-          type: 'success',
-          message: res.message || 'Đã tạo phiếu nhập kho và tăng số lượng tồn thành công!',
-        });
+        toast.success(res.message || 'Đã tạo phiếu nhập kho và tăng số lượng tồn thành công!',);
         setShowCreateReceiptModal(false);
         fetchInventory(); // Tải lại bảng tồn kho
       } else {
-        setAlert({
-          type: 'error',
-          message: res.message || 'Nhập kho thất bại.',
-        });
+        toast.error(res.message || 'Nhập kho thất bại.',);
       }
     });
   };
@@ -396,18 +376,12 @@ export function useInventory() {
     startUpdateThreshold(async () => {
       const res = await updateThresholdAction(newThreshold);
       if (res.success) {
-        setAlert({
-          type: 'success',
-          message: 'Đã cập nhật ngưỡng cảnh báo tồn tối thiểu toàn hệ thống!',
-        });
+        toast.success('Đã cập nhật ngưỡng cảnh báo tồn tối thiểu toàn hệ thống!',);
         setCurrentThreshold(newThreshold);
         setThresholdFilter(newThreshold); // Đồng bộ lại bộ lọc ngoài bảng
         setShowThresholdEditModal(false);
       } else {
-        setAlert({
-          type: 'error',
-          message: res.message || 'Cập nhật ngưỡng thất bại.',
-        });
+        toast.error(res.message || 'Cập nhật ngưỡng thất bại.',);
       }
     });
   };
@@ -419,17 +393,11 @@ export function useInventory() {
 
     const res = await cancelStockReceiptAction(receiptId);
     if (res.success) {
-      setAlert({
-        type: 'success',
-        message: 'Đã hủy phiếu nhập kho và hoàn lại số lượng tồn kho thành công!',
-      });
+      toast.success('Đã hủy phiếu nhập kho và hoàn lại số lượng tồn kho thành công!',);
       fetchReceipts(receiptsPage); // Tải lại lịch sử phiếu
       fetchInventory(); // Tải lại bảng tồn kho
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Không thể hủy phiếu nhập kho.',
-      });
+      toast.error(res.message || 'Không thể hủy phiếu nhập kho.',);
     }
   };
 

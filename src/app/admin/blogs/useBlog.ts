@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { getCurrentUser } from '@/service/accountService';
@@ -53,8 +54,8 @@ export function useBlog() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -68,10 +69,7 @@ export function useBlog() {
       setBlogsTotalPages(res.totalPages);
       setBlogsTotalCount(res.totalBlogs);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách bài viết.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách bài viết.',);
     }
     setBlogLoading(false);
   };
@@ -110,11 +108,11 @@ export function useBlog() {
     startCreateBlog(async () => {
       const res = await createBlogAction(blogData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowCreateBlogModal(false);
         fetchBlogs();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -142,11 +140,11 @@ export function useBlog() {
     startEditBlog(async () => {
       const res = await updateBlogAction(selectedBlog._id, blogData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowEditBlogModal(false);
         fetchBlogs();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -155,10 +153,10 @@ export function useBlog() {
   const handleToggleBlogActive = async (id: string) => {
     const res = await toggleBlogStatusAction(id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       fetchBlogs();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
@@ -167,11 +165,11 @@ export function useBlog() {
     if (!selectedBlog) return;
     const res = await deleteBlogAction(selectedBlog._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteBlogModal(false);
       fetchBlogs();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState } from 'react';
 import {
@@ -40,8 +41,8 @@ export function useOrder() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -52,7 +53,7 @@ export function useOrder() {
     if (res.success) {
       setOrdersData((res.orders || []).map(normalizeOrder));
     } else {
-      setAlert({ type: 'error', message: res.message || 'Lỗi tải danh sách đơn hàng.' });
+      toast.error(res.message || 'Lỗi tải danh sách đơn hàng.');
     }
     setOrderLoading(false);
   };
@@ -82,7 +83,7 @@ export function useOrder() {
   const handleShipOrder = async (id: string) => {
     const res = await updateOrderToDeliveredAction(id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       fetchOrders();
       if (selectedOrder && selectedOrder._id === id) {
         setSelectedOrder((prev: any) => ({
@@ -93,14 +94,14 @@ export function useOrder() {
         }));
       }
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
   const handleUpdateOrderStatus = async (id: string, status: string) => {
     const res = await updateOrderStatusAction(id, status);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       fetchOrders();
       if (selectedOrder && selectedOrder._id === id) {
         setSelectedOrder((prev: any) => ({
@@ -111,7 +112,7 @@ export function useOrder() {
         }));
       }
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
@@ -120,12 +121,12 @@ export function useOrder() {
     if (!selectedOrder) return;
     const res = await deleteOrderAction(selectedOrder._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteOrderModal(false);
       setShowOrderDetailsModal(false);
       fetchOrders();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

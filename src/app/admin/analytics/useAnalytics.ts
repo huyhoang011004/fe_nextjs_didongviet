@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useState, useEffect, useCallback } from 'react';
 import {
   getAnalyticsData,
@@ -54,8 +55,8 @@ export function useAnalytics() {
 
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -219,7 +220,7 @@ export function useAnalytics() {
       }
     } catch (err) {
       console.error('Error fetching analytics data:', err);
-      setAlert({ type: 'error', message: 'Không thể tải dữ liệu phân tích' });
+      toast.error('Không thể tải dữ liệu phân tích');
     } finally {
       setLoading(false);
     }

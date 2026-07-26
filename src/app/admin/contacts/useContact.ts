@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { getCurrentUser } from '@/service/accountService';
@@ -51,8 +52,8 @@ export function useContact() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -66,10 +67,7 @@ export function useContact() {
       setContactsTotalPages(res.totalPages);
       setContactsTotalCount(res.totalContacts);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách liên hệ.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách liên hệ.',);
     }
     setContactLoading(false);
   };
@@ -95,11 +93,11 @@ export function useContact() {
         notes,
       });
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowContactDetailsModal(false);
         fetchContacts();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -108,11 +106,11 @@ export function useContact() {
   const handleCancelContact = async (id: string) => {
     const res = await softDeleteContactAction(id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowContactDetailsModal(false);
       fetchContacts();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
@@ -121,12 +119,12 @@ export function useContact() {
     if (!selectedContact) return;
     const res = await deleteContactAction(selectedContact._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteContactModal(false);
       setShowContactDetailsModal(false);
       fetchContacts();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

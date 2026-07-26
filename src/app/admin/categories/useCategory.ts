@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
@@ -61,8 +62,8 @@ export function useCategory() {
   // Tự động ẩn thông báo alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -94,10 +95,7 @@ export function useCategory() {
       const flatCategories = flattenCategoryTree(res.categories);
       setCategoriesData(flatCategories);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách danh mục.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách danh mục.',);
     }
     setCategoryLoading(false);
   };
@@ -159,11 +157,11 @@ export function useCategory() {
     startCreateCategory(async () => {
       const res = await createCategoryAction(categoryData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowCreateCategoryModal(false);
         fetchCategories();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -193,11 +191,11 @@ export function useCategory() {
         categoryData,
       );
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowEditCategoryModal(false);
         fetchCategories();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -207,11 +205,11 @@ export function useCategory() {
     if (!selectedCategory) return;
     const res = await deleteCategoryAction(selectedCategory._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteCategoryModal(false);
       fetchCategories();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 

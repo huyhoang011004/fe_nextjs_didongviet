@@ -6,6 +6,7 @@ import { AdminHeader, UserProfile } from './_components/layout/AdminHeader';
 import { AdminSidebar } from './_components/layout/AdminSidebar';
 import { AdminLoading } from './_components/layout/AdminLoading';
 import { AccessDenied } from './_components/layout/AccessDenied';
+import { Toaster } from 'react-hot-toast';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       return;
     }
     const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-    return () => clearTimeout(timer);
+    
   }, [loading, user, countdown, router]);
 
   const handleLogout = async () => {
@@ -97,7 +98,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <main className='flex-1 overflow-x-hidden min-w-0 p-4 sm:p-6 lg:p-8 bg-slate-50 dark:bg-slate-950'>
           {children}
         </main>
-
+        <Toaster position="top-center" />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
@@ -79,8 +80,8 @@ export function useProduct() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -126,10 +127,7 @@ export function useProduct() {
       setProductsTotalPages(res.totalPages);
       setProductsTotalCount(res.totalProducts);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách sản phẩm.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách sản phẩm.',);
     }
     setProductLoading(false);
   };
@@ -161,10 +159,7 @@ export function useProduct() {
       const flatCategories = flattenCategoryTree(res.categories);
       setCategoriesData(flatCategories);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách danh mục.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách danh mục.',);
     }
     setCategoryLoading(false);
   };
@@ -203,13 +198,10 @@ export function useProduct() {
     const res = await softDeleteProductAction(id);
 
     if (res.success) {
-      setAlert({
-        type: 'success',
-        message: currentActive ? 'Đã ẩn sản phẩm thành công!' : 'Đã hiện sản phẩm thành công!',
-      });
+      toast.success(currentActive ? 'Đã ẩn sản phẩm thành công!' : 'Đã hiện sản phẩm thành công!',);
       fetchProducts();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
@@ -218,11 +210,11 @@ export function useProduct() {
     if (!productToDelete) return;
     const res = await hardDeleteProductAction(productToDelete._id);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       setShowDeleteProductModal(false);
       fetchProducts();
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
   };
 
@@ -313,11 +305,11 @@ export function useProduct() {
     startCreateProduct(async () => {
       const res = await createProductAction(formData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowCreateProductModal(false);
         fetchProducts();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -410,11 +402,11 @@ export function useProduct() {
     startEditProduct(async () => {
       const res = await updateProductAction(selectedProduct._id, formData);
       if (res.success) {
-        setAlert({ type: 'success', message: res.message });
+        toast.success(res.message);
         setShowEditProductModal(false);
         fetchProducts();
       } else {
-        setAlert({ type: 'error', message: res.message });
+        toast.error(res.message);
       }
     });
   };
@@ -432,14 +424,14 @@ export function useProduct() {
       formData,
     );
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       if (res.data && res.data.data) {
         setSelectedProduct(res.data.data);
       } else {
         fetchProducts();
       }
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
     setMediaLoading(false);
   };
@@ -448,23 +440,20 @@ export function useProduct() {
   const handleDeleteProductImage = async (imageId: string) => {
     if (!selectedProduct) return;
     if (selectedProduct.images && selectedProduct.images.length <= 1) {
-      setAlert({
-        type: 'error',
-        message: 'Sản phẩm phải chứa ít nhất 1 hình ảnh!',
-      });
+      toast.error('Sản phẩm phải chứa ít nhất 1 hình ảnh!',);
       return;
     }
     setMediaLoading(true);
     const res = await deleteProductImageAction(selectedProduct._id, imageId);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       if (res.data && res.data.data) {
         setSelectedProduct(res.data.data);
       } else {
         fetchProducts();
       }
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
     setMediaLoading(false);
   };
@@ -475,14 +464,14 @@ export function useProduct() {
     setMediaLoading(true);
     const res = await setProductThumbnailAction(selectedProduct._id, imageId);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       if (res.data && res.data.data) {
         setSelectedProduct(res.data.data);
       } else {
         fetchProducts();
       }
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
     setMediaLoading(false);
   };
@@ -495,14 +484,14 @@ export function useProduct() {
     setMediaLoading(true);
     const res = await reorderProductImagesAction(selectedProduct._id, orders);
     if (res.success) {
-      setAlert({ type: 'success', message: res.message });
+      toast.success(res.message);
       if (res.data && res.data.data) {
         setSelectedProduct(res.data.data);
       } else {
         fetchProducts();
       }
     } else {
-      setAlert({ type: 'error', message: res.message });
+      toast.error(res.message);
     }
     setMediaLoading(false);
   };

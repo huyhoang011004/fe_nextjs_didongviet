@@ -81,22 +81,7 @@ function InventoryAdminContent() {
 
   return (
     <div className='space-y-6 relative'>
-      {/* THÔNG BÁO TOAST FLOATING GÓC DƯỚI BÊN PHẢI */}
-      {alert && (
-        <div
-          className={`
-          fixed bottom-5 right-5 z-[9999] p-4 rounded-xl shadow-2xl border flex items-center gap-3 animate-in fade-in slide-in-from-bottom-5 duration-300 max-w-sm
-          ${alert.type === 'success' ? 'bg-green-50/95 border-green-200 text-green-800' : 'bg-red-50/95 border-red-200 text-red-800'}
-        `}
-        >
-          {alert.type === 'success' ? (
-            <CheckCircle className='text-green-600 flex-shrink-0' />
-          ) : (
-            <AlertCircle className='text-red-600 flex-shrink-0' />
-          )}
-          <span className='text-sm font-semibold'>{alert.message}</span>
-        </div>
-      )}
+      
 
       {/* Header Phân hệ kho */}
       <InventoryHeader

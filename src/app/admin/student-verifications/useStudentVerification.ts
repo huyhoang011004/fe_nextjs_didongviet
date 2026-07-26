@@ -1,4 +1,5 @@
 'use client';
+import toast from 'react-hot-toast';
 
 import { useEffect, useState, useTransition } from 'react';
 import { getCurrentUser } from '@/service/accountService';
@@ -45,8 +46,8 @@ export function useStudentVerification() {
   // Tự động ẩn alert sau 4 giây
   useEffect(() => {
     if (alert) {
-      const timer = setTimeout(() => setAlert(null), 4000);
-      return () => clearTimeout(timer);
+      
+      
     }
   }, [alert]);
 
@@ -57,10 +58,7 @@ export function useStudentVerification() {
     if (res.success) {
       setPendingProfiles(res.data);
     } else {
-      setAlert({
-        type: 'error',
-        message: res.message || 'Lỗi tải danh sách hồ sơ HSSV.',
-      });
+      toast.error(res.message || 'Lỗi tải danh sách hồ sơ HSSV.');
     }
     setLoading(false);
   };
@@ -101,18 +99,11 @@ export function useStudentVerification() {
     startVerify(async () => {
       const res = await verifyHSSVStatusAction(selectedProfile._id, data);
       if (res.success) {
-        setAlert({
-          type: 'success',
-          message:
-            res.message + (res.instruction ? ` (${res.instruction})` : ''),
-        });
+        toast.success(res.message + (res.instruction ? ` (${res.instruction})` : ''));
         setShowDetailsModal(false);
         fetchPendingProfiles();
       } else {
-        setAlert({
-          type: 'error',
-          message: res.message,
-        });
+        toast.error(res.message);
       }
     });
   };
