@@ -22,19 +22,19 @@ Xây dựng bằng **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**.
 
 ## 🚀 Công nghệ sử dụng
 
-| Công nghệ | Phiên bản | Mục đích |
-|-----------|-----------|----------|
-| Next.js | 16.x | React framework (App Router) |
-| React | 19.x | UI library |
-| TypeScript | 5.x | Kiểu dữ liệu tĩnh |
-| Tailwind CSS | 4.x | Utility-first CSS |
-| Shadcn/ui | — | UI components (Radix UI) |
-| Zustand | 5.x | State management |
-| Recharts | 3.x | Biểu đồ thống kê |
-| Lucide React | — | Icon library |
-| Google Gemini AI | — | Chatbot AI |
-| jsPDF | — | Xuất PDF hóa đơn |
-| xlsx-js-style | — | Xuất Excel báo cáo |
+| Công nghệ        | Phiên bản | Mục đích                     |
+| ---------------- | --------- | ---------------------------- |
+| Next.js          | 16.x      | React framework (App Router) |
+| React            | 19.x      | UI library                   |
+| TypeScript       | 5.x       | Kiểu dữ liệu tĩnh            |
+| Tailwind CSS     | 4.x       | Utility-first CSS            |
+| Shadcn/ui        | —         | UI components (Radix UI)     |
+| Zustand          | 5.x       | State management             |
+| Recharts         | 3.x       | Biểu đồ thống kê             |
+| Lucide React     | —         | Icon library                 |
+| Google Gemini AI | —         | Chatbot AI                   |
+| jsPDF            | —         | Xuất PDF hóa đơn             |
+| xlsx-js-style    | —         | Xuất Excel báo cáo           |
 
 ---
 
@@ -76,11 +76,11 @@ fe_didongviet_nextjs/
 
 ## ✅ Yêu cầu hệ thống (Prerequisites)
 
-| Công cụ | Phiên bản tối thiểu | Tải về |
-|---------|---------------------|--------|
-| **Node.js** | ≥ 18.x (khuyến nghị 20.x LTS) | [nodejs.org](https://nodejs.org) |
-| **npm** | ≥ 9.x (đi kèm Node.js) | — |
-| **Git** | ≥ 2.x | [git-scm.com](https://git-scm.com) |
+| Công cụ     | Phiên bản tối thiểu           | Tải về                             |
+| ----------- | ----------------------------- | ---------------------------------- |
+| **Node.js** | ≥ 18.x (khuyến nghị 20.x LTS) | [nodejs.org](https://nodejs.org)   |
+| **npm**     | ≥ 9.x (đi kèm Node.js)        | —                                  |
+| **Git**     | ≥ 2.x                         | [git-scm.com](https://git-scm.com) |
 
 > **Lưu ý:** Để chạy Frontend, bạn cần **Backend** đang hoạt động tại `http://localhost:5000`.  
 > Hãy clone và chạy Backend trước theo hướng dẫn tại:  
@@ -111,10 +111,9 @@ copy .env.example .env.local    # Trên Windows
 
 Tạo file `.env.local` tại thư mục gốc:
 
-| Biến | Mô tả | Giá trị mẫu |
-|------|-------|-------------|
-| `NEXT_PUBLIC_API_URL` | URL Backend API (bao gồm /api/v1) | `http://localhost:5000/api/v1` |
-| `NEXT_PUBLIC_API_BASE_URL` | Base URL Backend (dùng cho ảnh) | `http://localhost:5000` |
+| Biến                  | Mô tả           | Giá trị mẫu             |
+| --------------------- | --------------- | ----------------------- |
+| `NEXT_PUBLIC_API_URL` | URL Backend API | `http://localhost:5000` |
 
 ---
 
@@ -128,8 +127,9 @@ npm run dev
 
 Server sẽ chạy tại: **http://localhost:3000**
 
-> **Mở trình duyệt:**  
-> - Trang chủ: `http://localhost:3000`  
+> **Mở trình duyệt:**
+>
+> - Trang chủ: `http://localhost:3000`
 > - Trang quản trị: `http://localhost:3000/admin` (đăng nhập với tài khoản admin)
 
 ### Môi trường Production
@@ -146,6 +146,7 @@ npm run start
 ## ✨ Tính năng chính
 
 ### 👤 Người dùng (Front-end)
+
 - 🛍️ Xem danh mục sản phẩm, tìm kiếm, lọc sản phẩm theo thương hiệu & giá
 - 📱 Xem chi tiết sản phẩm (nhiều màu sắc, dung lượng, RAM)
 - 🛒 Giỏ hàng, áp dụng voucher giảm giá
@@ -157,6 +158,7 @@ npm run start
 - 📰 Tin tức công nghệ (Blog)
 
 ### 🔧 Quản trị (Admin)
+
 - 📊 Dashboard thống kê (doanh thu, đơn hàng, tồn kho) — Recharts biểu đồ
 - 📦 Quản lý sản phẩm (thêm/sửa/xóa, variants, hình ảnh)
 - 🏷️ Quản lý danh mục
