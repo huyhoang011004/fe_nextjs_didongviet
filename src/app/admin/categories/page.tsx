@@ -3,13 +3,13 @@
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useCategory } from './useCategory';
-import { CategoryHeader } from '@/app/admin/categories/_category-components/CategoryHeader';
-import { CategoryFilters } from '@/app/admin/categories/_category-components/CategoryFilters';
-import { CategoryTable } from '@/app/admin/categories/_category-components/CategoryTable';
-import { CreateCategoryModal } from '@/app/admin/categories/_category-components/CreateCategoryModal';
-import { EditCategoryModal } from '@/app/admin/categories/_category-components/EditCategoryModal';
-import { DeleteCategoryModal } from '@/app/admin/categories/_category-components/DeleteCategoryModal';
+import { useCategory } from '@/features/admin/hooks/useCategory';
+import { CategoryHeader } from '@/features/admin/components/categories/CategoryHeader';
+import { CategoryFilters } from '@/features/admin/components/categories/CategoryFilters';
+import { CategoryTable } from '@/features/admin/components/categories/CategoryTable';
+import { CreateCategoryModal } from '@/features/admin/components/categories/CreateCategoryModal';
+import { EditCategoryModal } from '@/features/admin/components/categories/EditCategoryModal';
+import { DeleteCategoryModal } from '@/features/admin/components/categories/DeleteCategoryModal';
 
 function CategoriesAdminContent() {
   const {

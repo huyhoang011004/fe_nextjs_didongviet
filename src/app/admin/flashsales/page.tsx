@@ -24,8 +24,8 @@ import {
   deleteFlashSaleAction,
   toggleFlashSaleStatusAction,
   getFlashSaleByIdAction,
-} from './flashsale-actions';
-import { getProductsAction } from '../products/product-actions';
+} from '@/features/admin/actions/flashsale-actions';
+import { getProductsAction } from '@/features/admin/actions/product-actions';
 
 interface FlashSaleProductInput {
   product: string;

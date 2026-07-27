@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { AdminHeader, UserProfile } from './_components/layout/AdminHeader';
-import { AdminSidebar } from './_components/layout/AdminSidebar';
-import { AdminLoading } from './_components/layout/AdminLoading';
-import { AccessDenied } from './_components/layout/AccessDenied';
+import { AdminHeader, UserProfile } from '@/components/layout/admin/AdminHeader';
+import { AdminSidebar } from '@/components/layout/admin/AdminSidebar';
+import { AdminLoading } from '@/components/layout/admin/AdminLoading';
+import { AccessDenied } from '@/components/layout/admin/AccessDenied';
 import { Toaster } from 'react-hot-toast';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

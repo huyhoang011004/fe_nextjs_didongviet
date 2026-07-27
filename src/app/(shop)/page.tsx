@@ -1,17 +1,17 @@
 'use client';
 
-import CategoriesSection from './_components/page/CategoriesSection';
-import FlashSaleSection from './_components/page/FlashSaleSection';
-import ProductSection from './_components/page/ProductSection';
-import CustomerGallery from './_components/page/CustomerGallery';
-import BlogSection from './_components/page/BlogSection';
-import TradeInSection from './_components/page/TradeInSection';
+import CategoriesSection from '@/features/home/components/CategoriesSection';
+import FlashSaleSection from '@/features/home/components/FlashSaleSection';
+import ProductSection from '@/features/home/components/ProductSection';
+import CustomerGallery from '@/features/home/components/CustomerGallery';
+import BlogSection from '@/features/home/components/BlogSection';
+import TradeInSection from '@/features/home/components/TradeInSection';
 import {
   HorizontalBanner,
   GridBanners,
   PartnerLogos,
-} from './_components/page/PromoBanners';
-import { useShop } from './useShop';
+} from '@/features/home/components/PromoBanners';
+import { useShop } from '@/features/home/hooks/useShop';
 
 export default function ShopHomepage() {
   const {

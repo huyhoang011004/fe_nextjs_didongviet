@@ -20,16 +20,16 @@ import {
   ChevronUp,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useCartStore } from '@/app/(shop)/cart/useCartStore';
-import CartItem from './_components/CartItem';
-import VoucherList from './_components/VoucherList';
-import CartSEOAndFAQ from './_components/CartSEOAndFAQ';
+import { useCartStore } from '@/features/cart/hooks/useCartStore';
+import CartItem from '@/features/cart/components/CartItem';
+import VoucherList from '@/features/cart/components/VoucherList';
+import CartSEOAndFAQ from '@/features/cart/components/CartSEOAndFAQ';
 import {
   fetchVouchers,
   findVoucherByCode,
   calcVoucherValue,
   applyVoucherServer,
-} from './cart-actions';
+} from '@/features/cart/actions/cart-actions';
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 

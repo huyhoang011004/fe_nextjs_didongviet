@@ -3,12 +3,12 @@
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useOrder } from './useOrder';
-import { OrderHeader } from '@/app/admin/orders/_order-components/OrderHeader';
-import { OrderFilters } from '@/app/admin/orders/_order-components/OrderFilters';
-import { OrderTable } from '@/app/admin/orders/_order-components/OrderTable';
-import { OrderDetailsModal } from '@/app/admin/orders/_order-components/OrderDetailsModal';
-import { DeleteOrderModal } from '@/app/admin/orders/_order-components/DeleteOrderModal';
+import { useOrder } from '@/features/admin/hooks/useOrder';
+import { OrderHeader } from '@/features/admin/components/orders/OrderHeader';
+import { OrderFilters } from '@/features/admin/components/orders/OrderFilters';
+import { OrderTable } from '@/features/admin/components/orders/OrderTable';
+import { OrderDetailsModal } from '@/features/admin/components/orders/OrderDetailsModal';
+import { DeleteOrderModal } from '@/features/admin/components/orders/DeleteOrderModal';
 
 function OrdersAdminContent() {
   const {

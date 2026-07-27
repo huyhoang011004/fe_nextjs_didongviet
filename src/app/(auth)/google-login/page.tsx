@@ -1,4 +1,4 @@
-import { GoogleLoginCallback } from '@/app/(auth)/_components/google-login/google-login-callback';
+import { GoogleLoginCallback } from '@/features/auth/components/google-login/google-login-callback';
 import { Suspense } from 'react';
 
 export const metadata = {

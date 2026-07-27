@@ -3,13 +3,13 @@
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useVoucher } from './useVoucher';
-import { VoucherFilters } from '@/app/admin/vouchers/_voucher-components/VoucherFilters';
-import { VoucherHeader } from '@/app/admin/vouchers/_voucher-components/VoucherHeader';
-import { VoucherTable } from '@/app/admin/vouchers/_voucher-components/VoucherTable';
-import { CreateVoucherModal } from '@/app/admin/vouchers/_voucher-components/CreateVoucherModal';
-import { EditVoucherModal } from '@/app/admin/vouchers/_voucher-components/EditVoucherModal';
-import { DeleteVoucherModal } from '@/app/admin/vouchers/_voucher-components/DeleteVoucherModal';
+import { useVoucher } from '@/features/admin/hooks/useVoucher';
+import { VoucherFilters } from '@/features/admin/components/vouchers/VoucherFilters';
+import { VoucherHeader } from '@/features/admin/components/vouchers/VoucherHeader';
+import { VoucherTable } from '@/features/admin/components/vouchers/VoucherTable';
+import { CreateVoucherModal } from '@/features/admin/components/vouchers/CreateVoucherModal';
+import { EditVoucherModal } from '@/features/admin/components/vouchers/EditVoucherModal';
+import { DeleteVoucherModal } from '@/features/admin/components/vouchers/DeleteVoucherModal';
 
 function VouchersAdminContent() {
   const {

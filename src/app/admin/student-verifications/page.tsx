@@ -3,11 +3,11 @@
 import React, { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useStudentVerification } from './useStudentVerification';
-import { StudentVerificationHeader } from '@/app/admin/student-verifications/_student-verification-components/StudentVerificationHeader';
-import { StudentVerificationFilters } from '@/app/admin/student-verifications/_student-verification-components/StudentVerificationFilters';
-import { StudentVerificationTable } from '@/app/admin/student-verifications/_student-verification-components/StudentVerificationTable';
-import { StudentVerificationDetailsModal } from '@/app/admin/student-verifications/_student-verification-components/StudentVerificationDetailsModal';
+import { useStudentVerification } from '@/features/admin/hooks/useStudentVerification';
+import { StudentVerificationHeader } from '@/features/admin/components/student-verifications/StudentVerificationHeader';
+import { StudentVerificationFilters } from '@/features/admin/components/student-verifications/StudentVerificationFilters';
+import { StudentVerificationTable } from '@/features/admin/components/student-verifications/StudentVerificationTable';
+import { StudentVerificationDetailsModal } from '@/features/admin/components/student-verifications/StudentVerificationDetailsModal';
 
 function StudentVerificationsAdminContent() {
   const {

@@ -3,12 +3,12 @@
 import React, { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useContact } from './useContact';
-import { ContactHeader } from '@/app/admin/contacts/_contact-components/ContactHeader';
-import { ContactFilters } from '@/app/admin/contacts/_contact-components/ContactFilters';
-import { ContactTable } from '@/app/admin/contacts/_contact-components/ContactTable';
-import { ContactDetailsModal } from '@/app/admin/contacts/_contact-components/ContactDetailsModal';
-import { DeleteContactModal } from '@/app/admin/contacts/_contact-components/DeleteContactModal';
+import { useContact } from '@/features/admin/hooks/useContact';
+import { ContactHeader } from '@/features/admin/components/contacts/ContactHeader';
+import { ContactFilters } from '@/features/admin/components/contacts/ContactFilters';
+import { ContactTable } from '@/features/admin/components/contacts/ContactTable';
+import { ContactDetailsModal } from '@/features/admin/components/contacts/ContactDetailsModal';
+import { DeleteContactModal } from '@/features/admin/components/contacts/DeleteContactModal';
 
 function ContactsAdminContent() {
   const {

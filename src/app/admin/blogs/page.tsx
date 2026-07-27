@@ -3,13 +3,13 @@
 import React, { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useBlog } from './useBlog';
-import { BlogHeader } from '@/app/admin/blogs/_blog-components/BlogHeader';
-import { BlogFilters } from '@/app/admin/blogs/_blog-components/BlogFilters';
-import { BlogTable } from '@/app/admin/blogs/_blog-components/BlogTable';
-import { CreateBlogModal } from '@/app/admin/blogs/_blog-components/CreateBlogModal';
-import { EditBlogModal } from '@/app/admin/blogs/_blog-components/EditBlogModal';
-import { DeleteBlogModal } from '@/app/admin/blogs/_blog-components/DeleteBlogModal';
+import { useBlog } from '@/features/admin/hooks/useBlog';
+import { BlogHeader } from '@/features/admin/components/blogs/BlogHeader';
+import { BlogFilters } from '@/features/admin/components/blogs/BlogFilters';
+import { BlogTable } from '@/features/admin/components/blogs/BlogTable';
+import { CreateBlogModal } from '@/features/admin/components/blogs/CreateBlogModal';
+import { EditBlogModal } from '@/features/admin/components/blogs/EditBlogModal';
+import { DeleteBlogModal } from '@/features/admin/components/blogs/DeleteBlogModal';
 
 function BlogsAdminContent() {
   const {

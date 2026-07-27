@@ -9,7 +9,7 @@ import {
   createBannerAction,
   updateBannerAction,
   deleteBannerAction,
-} from './banner-actions';
+} from '@/features/admin/actions/banner-actions';
 
 interface Banner {
   _id: string;

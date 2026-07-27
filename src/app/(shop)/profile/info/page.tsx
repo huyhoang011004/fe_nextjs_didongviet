@@ -1,10 +1,10 @@
 'use client';
 
-import { useInfo } from './useInfo';
-import ProfileTab from './_components/ProfileTab';
-import AddressesTab from './_components/AddressesTab';
-import PasswordTab from './_components/PasswordTab';
-import StudentProfileTab from './_components/StudentProfileTab';
+import { useInfo } from '@/features/profile/hooks/useInfo';
+import ProfileTab from '@/features/profile/components/ProfileTab';
+import AddressesTab from '@/features/profile/components/AddressesTab';
+import PasswordTab from '@/features/profile/components/PasswordTab';
+import StudentProfileTab from '@/features/profile/components/StudentProfileTab';
 import { ShieldCheck, MapPin, Lock, User as UserIcon, CheckCircle, AlertCircle, Award } from 'lucide-react';
 
 const VIETNAM_PROVINCES = [

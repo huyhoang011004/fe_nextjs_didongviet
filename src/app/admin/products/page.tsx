@@ -1,13 +1,13 @@
 'use client';
 
 import { Suspense } from 'react';
-import { useProduct } from './useProduct';
-import { ProductHeader } from './_product-components/ProductHeader';
-import { ProductFilters } from './_product-components/ProductFilters';
-import { ProductTable } from './_product-components/ProductTable';
-import { CreateProductModal } from './_product-components/CreateProductModal';
-import { EditProductModal } from './_product-components/EditProductModal';
-import { DeleteProductModal } from './_product-components/DeleteProductModal';
+import { useProduct } from '@/features/admin/hooks/useProduct';
+import { ProductHeader } from '@/features/admin/components/products/ProductHeader';
+import { ProductFilters } from '@/features/admin/components/products/ProductFilters';
+import { ProductTable } from '@/features/admin/components/products/ProductTable';
+import { CreateProductModal } from '@/features/admin/components/products/CreateProductModal';
+import { EditProductModal } from '@/features/admin/components/products/EditProductModal';
+import { DeleteProductModal } from '@/features/admin/components/products/DeleteProductModal';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 
 function ProductsAdminContent() {

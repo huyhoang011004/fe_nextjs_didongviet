@@ -3,14 +3,14 @@
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useAccount } from './useAccount';
-import { AccountHeader } from '@/app/admin/accounts/_account-components/AccountHeader';
-import { AccountFilters } from '@/app/admin/accounts/_account-components/AccountFilters';
-import { AccountTable } from '@/app/admin/accounts/_account-components/AccountTable';
-import { CreateUserModal } from '@/app/admin/accounts/_account-components/CreateUserModal';
-import { EditUserModal } from '@/app/admin/accounts/_account-components/EditUserModal';
-import { LockUserModal } from '@/app/admin/accounts/_account-components/LockUserModal';
-import { DeleteUserModal } from '@/app/admin/accounts/_account-components/DeleteUserModal';
+import { useAccount } from '@/features/admin/hooks/useAccount';
+import { AccountHeader } from '@/features/admin/components/accounts/AccountHeader';
+import { AccountFilters } from '@/features/admin/components/accounts/AccountFilters';
+import { AccountTable } from '@/features/admin/components/accounts/AccountTable';
+import { CreateUserModal } from '@/features/admin/components/accounts/CreateUserModal';
+import { EditUserModal } from '@/features/admin/components/accounts/EditUserModal';
+import { LockUserModal } from '@/features/admin/components/accounts/LockUserModal';
+import { DeleteUserModal } from '@/features/admin/components/accounts/DeleteUserModal';
 
 function AccountsAdminContent() {
   const {

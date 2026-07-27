@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronRight, RotateCw, Star, Info, ShoppingBag, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { fetchShopTradeIn, fetchShopProducts } from '../../shop-actions';
+import { fetchShopTradeIn, fetchShopProducts } from '@/features/home/actions/shop-actions';
 
 // Chuẩn hóa định dạng hiển thị tiền tệ VNĐ
 const formatVND = (num: number) => {

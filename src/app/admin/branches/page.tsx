@@ -3,13 +3,13 @@
 import { Suspense } from 'react';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { useBranch } from './useBranch';
-import { BranchHeader } from '@/app/admin/branches/_branch-components/BranchHeader';
-import { BranchFilters } from '@/app/admin/branches/_branch-components/BranchFilters';
-import { BranchTable } from '@/app/admin/branches/_branch-components/BranchTable';
-import { CreateBranchModal } from '@/app/admin/branches/_branch-components/CreateBranchModal';
-import { EditBranchModal } from '@/app/admin/branches/_branch-components/EditBranchModal';
-import { DeleteBranchModal } from '@/app/admin/branches/_branch-components/DeleteBranchModal';
+import { useBranch } from '@/features/admin/hooks/useBranch';
+import { BranchHeader } from '@/features/admin/components/branches/BranchHeader';
+import { BranchFilters } from '@/features/admin/components/branches/BranchFilters';
+import { BranchTable } from '@/features/admin/components/branches/BranchTable';
+import { CreateBranchModal } from '@/features/admin/components/branches/CreateBranchModal';
+import { EditBranchModal } from '@/features/admin/components/branches/EditBranchModal';
+import { DeleteBranchModal } from '@/features/admin/components/branches/DeleteBranchModal';
 
 function BranchesAdminContent() {
   const {

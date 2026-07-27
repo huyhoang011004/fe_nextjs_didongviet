@@ -4,14 +4,14 @@
 Xây dựng bằng **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**.
 
 > ⚠️ **Repository riêng**: Đây là mã nguồn **Frontend**. Repository Backend riêng tại:  
-> `https://github.com/huyhoang011004/fe_didongviet_nextjs`
+> `https://github.com/huyhoang011004/Be_Didongviet`
 
 ---
 
 ## 📋 Mục lục
 
 - [Công nghệ sử dụng](#-công-nghệ-sử-dụng)
-- [Cấu trúc thư mục](#-cấu-trúc-thư-mục)
+- [Cấu trúc thư mục (Feature-based Architecture)](#-cấu-trúc-thư-mục-feature-based-architecture)
 - [Yêu cầu hệ thống](#-yêu-cầu-hệ-thống-prerequisites)
 - [Hướng dẫn cài đặt](#-hướng-dẫn-cài-đặt)
 - [Cấu hình biến môi trường](#-cấu-hình-biến-môi-trường)
@@ -38,54 +38,37 @@ Xây dựng bằng **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**.
 
 ---
 
-## 📁 Cấu trúc thư mục
+## 📁 Cấu trúc thư mục (Feature-based Architecture)
+
+Dự án được thiết kế chuẩn theo kiến trúc **Feature-based** nhằm tối đa hóa khả năng bảo trì và tái sử dụng. Các thành phần được chia theo luồng nghiệp vụ riêng biệt thay vì gom chung toàn bộ vào `app/`.
 
 ```
 fe_didongviet_nextjs/
 ├── src/
-│   ├── app/
-│   │   ├── (auth)/              # Trang đăng nhập, đăng ký, OTP...
-│   │   ├── (shop)/              # Trang mua sắm chính
-│   │   │   ├── (category)/      # Danh mục + Chi tiết sản phẩm
-│   │   │   ├── cart/            # Giỏ hàng
-│   │   │   ├── checkout/        # Thanh toán
-│   │   │   ├── profile/         # Hồ sơ, đơn hàng của tôi
-│   │   │   ├── blogs/           # Tin tức
-│   │   │   ├── search/          # Tìm kiếm
-│   │   │   ├── contact/         # Liên hệ
-│   │   │   ├── vouchers/        # Mã giảm giá
-│   │   │   └── track/           # Tra cứu đơn hàng
-│   │   ├── admin/               # Trang quản trị
-│   │   │   ├── accounts/        # Quản lý người dùng
-│   │   │   ├── analytics/       # Thống kê (Dashboard)
-│   │   │   ├── products/        # Quản lý sản phẩm
-│   │   │   ├── orders/          # Quản lý đơn hàng
-│   │   │   ├── categories/      # Quản lý danh mục
-│   │   │   ├── inventory/       # Quản lý tồn kho
-│   │   │   ├── vouchers/        # Quản lý voucher
-│   │   │   └── blogs/           # Quản lý blog
-│   │   └── api/                 # BFF API routes (Backend For Frontend)
-│   ├── middleware.ts            # Route protection
-│   ├── shared/
-│   │   ├── components/          # UI components (shadcn/ui + custom)
-│   │   ├── constants/           # Menu items, contact info
-│   │   ├── hooks/               # Custom hooks
-│   │   ├── lib/                 # Utilities (api client, utils)
-│   │   ├── service/             # API service layer
-│   │   └── stores/              # Zustand stores
-│   ├── styles/
-│   │   └── globals.css          # Global styles
-│   └── types/                   # TypeScript definitions
-│       ├── auth.d.ts
-│       ├── product.d.ts
-│       ├── order.d.ts
-│       ├── blog.d.ts
-│       ├── voucher.d.ts
-│       ├── contact.d.ts
-│       └── student.d.ts
+│   ├── app/                     # Chỉ dùng cho Routing & Layout
+│   │   ├── (auth)/              # Routing: Đăng nhập, đăng ký
+│   │   ├── (shop)/              # Routing: Trang mua sắm, Checkout, Home
+│   │   ├── admin/               # Routing: Trang quản trị (Dashboard)
+│   │   └── globals.css          # Global CSS Tailwind
+│   ├── components/              # Global UI Components (dùng chung toàn app)
+│   │   ├── ui/                  # Shadcn UI Components
+│   │   └── ...                  # Header, Footer, Carousel
+│   ├── features/                # Trái tim dự án: Chia theo nghiệp vụ
+│   │   ├── admin/               # Feature: Admin Dashboard, Data tables, Actions
+│   │   ├── auth/                # Feature: Xác thực, đăng nhập
+│   │   ├── cart/                # Feature: Quản lý giỏ hàng
+│   │   ├── checkout/            # Feature: Thanh toán, Đơn hàng
+│   │   ├── home/                # Feature: Giao diện Trang chủ, FlashSale
+│   │   ├── orders/              # Feature: Lịch sử đơn hàng, Trả hàng
+│   │   ├── products/            # Feature: Chi tiết & Danh sách sản phẩm, Đánh giá
+│   │   └── profile/             # Feature: Hồ sơ user, HSSV
+│   ├── hooks/                   # Global Hooks (useHoverDelay, useMobile...)
+│   ├── lib/                     # Global Utilities (api-client, utils)
+│   └── types/                   # Type definitions
 ├── .env.example                 # Mẫu biến môi trường
 ├── SCRIPT_VIDEO_DEMO.md         # Kịch bản quay video demo
 ├── TESTCASES.md                 # Bảng Test Cases
+├── components.json              # Cấu hình Shadcn
 └── package.json
 ```
 

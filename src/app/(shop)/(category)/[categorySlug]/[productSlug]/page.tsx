@@ -3,17 +3,17 @@
 import { useParams, useRouter } from 'next/navigation';
 import { Info, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useProductDetail } from './useProductDetail';
-import ProductBreadcrumb from './_product-detail-components/ProductBreadcrumb';
-import ProductGallery from './_product-detail-components/ProductGallery';
-import ProductInfo from './_product-detail-components/ProductInfo';
-import StoreStock from './_product-detail-components/StoreStock';
-import ProductDescription from './_product-detail-components/ProductDescription';
-import ProductSpecs from './_product-detail-components/ProductSpecs';
-import ProductFAQ from './_product-detail-components/ProductFAQ';
-import ProductReviews from './_product-detail-components/ProductReviews';
-import ProductNews from './_product-detail-components/ProductNews';
-import RelatedProducts from './_product-detail-components/RelatedProducts';
+import { useProductDetail } from '@/features/products/hooks/useProductDetail';
+import ProductBreadcrumb from '@/features/products/components/ProductBreadcrumb';
+import ProductGallery from '@/features/products/components/ProductGallery';
+import ProductInfo from '@/features/products/components/ProductInfo';
+import StoreStock from '@/features/products/components/StoreStock';
+import ProductDescription from '@/features/products/components/ProductDescription';
+import ProductSpecs from '@/features/products/components/ProductSpecs';
+import ProductFAQ from '@/features/products/components/ProductFAQ';
+import ProductReviews from '@/features/products/components/ProductReviews';
+import ProductNews from '@/features/products/components/ProductNews';
+import RelatedProducts from '@/features/products/components/RelatedProducts';
 
 export default function ProductDetailPage() {
   const params = useParams();

@@ -1,9 +1,9 @@
 'use client';
 
-import { useOrders } from './useOrders';
-import OrderTabs from './_components/OrderTabs';
-import OrderCard from './_components/OrderCard';
-import OrderDetailModal from './_components/OrderDetailModal';
+import { useOrders } from '@/features/orders/hooks/useOrders';
+import OrderTabs from '@/features/orders/components/OrderTabs';
+import OrderCard from '@/features/orders/components/OrderCard';
+import OrderDetailModal from '@/features/orders/components/OrderDetailModal';
 import { Package, AlertCircle, CheckCircle, RefreshCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';

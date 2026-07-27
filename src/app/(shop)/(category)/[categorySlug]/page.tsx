@@ -3,12 +3,12 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-import { useCategory } from './useCategory';
-import BrandFilters from './_category-components/BrandFilters';
-import SortBar from './_category-components/SortBar';
-import ProductGrid from './_category-components/ProductGrid';
-import SeoContent from './_category-components/SeoContent';
-import FaqSection from './_category-components/FaqSection';
+import { useCategory } from '@/features/categories/hooks/useCategory';
+import BrandFilters from '@/features/categories/components/BrandFilters';
+import SortBar from '@/features/categories/components/SortBar';
+import ProductGrid from '@/features/categories/components/ProductGrid';
+import SeoContent from '@/features/categories/components/SeoContent';
+import FaqSection from '@/features/categories/components/FaqSection';
 
 export default function CategoryProductsPage() {
   const params = useParams();

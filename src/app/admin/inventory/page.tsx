@@ -1,14 +1,14 @@
 'use client';
 
 import { Suspense } from 'react';
-import { useInventory } from './useInventory';
-import InventoryHeader from './_inventory-components/InventoryHeader';
-import InventoryFilters from './_inventory-components/InventoryFilters';
-import InventoryTable from './_inventory-components/InventoryTable';
-import UpdateStockModal from './_inventory-components/UpdateStockModal';
-import CreateReceiptModal from './_inventory-components/CreateReceiptModal';
-import ReceiptsListModal from './_inventory-components/ReceiptsListModal';
-import ThresholdEditModal from './_inventory-components/ThresholdEditModal';
+import { useInventory } from '@/features/admin/hooks/useInventory';
+import InventoryHeader from '@/features/admin/components/inventory/InventoryHeader';
+import InventoryFilters from '@/features/admin/components/inventory/InventoryFilters';
+import InventoryTable from '@/features/admin/components/inventory/InventoryTable';
+import UpdateStockModal from '@/features/admin/components/inventory/UpdateStockModal';
+import CreateReceiptModal from '@/features/admin/components/inventory/CreateReceiptModal';
+import ReceiptsListModal from '@/features/admin/components/inventory/ReceiptsListModal';
+import ThresholdEditModal from '@/features/admin/components/inventory/ThresholdEditModal';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 
 function InventoryAdminContent() {

@@ -1,4 +1,4 @@
-import { ResendOtpForm } from '@/app/(auth)/_components/resend-otp/resend-otp-form';
+import { ResendOtpForm } from '@/features/auth/components/resend-otp/resend-otp-form';
 import { Suspense } from 'react';
 
 export const metadata = {

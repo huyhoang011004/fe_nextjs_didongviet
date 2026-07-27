@@ -1,4 +1,4 @@
-import { VerifyOtpForm } from '@/app/(auth)/_components/verify-otp/verify-otp-form';
+import { VerifyOtpForm } from '@/features/auth/components/verify-otp/verify-otp-form';
 import { Suspense } from 'react';
 
 export const metadata = {

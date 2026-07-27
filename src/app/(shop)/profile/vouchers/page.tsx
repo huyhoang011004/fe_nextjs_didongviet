@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Ticket, Percent, Clock, AlertCircle, Check, Copy, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { fetchVouchers } from '../../cart/cart-actions';
+import { fetchVouchers } from '@/features/cart/actions/cart-actions';
 
 const formatVND = (num: number) => {
   return new Intl.NumberFormat('vi-VN', {

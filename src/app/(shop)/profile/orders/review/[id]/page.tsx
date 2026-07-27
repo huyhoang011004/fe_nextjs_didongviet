@@ -1,8 +1,8 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useReview } from './useReview';
-import ReviewForm from './_components/ReviewForm';
+import { useReview } from '@/features/orders/hooks/useReview';
+import ReviewForm from '@/features/orders/components/review/ReviewForm';
 import { ClipboardList, AlertCircle, CheckCircle } from 'lucide-react';
 
 export default function ReviewOrderPage() {

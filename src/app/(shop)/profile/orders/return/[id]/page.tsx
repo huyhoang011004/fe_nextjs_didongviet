@@ -1,8 +1,8 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useReturn } from './useReturn';
-import ReturnForm from './_components/ReturnForm';
+import { useReturn } from '@/features/orders/hooks/useReturn';
+import ReturnForm from '@/features/orders/components/return/ReturnForm';
 import { ClipboardList, AlertCircle, CheckCircle } from 'lucide-react';
 
 export default function ReturnOrderPage() {

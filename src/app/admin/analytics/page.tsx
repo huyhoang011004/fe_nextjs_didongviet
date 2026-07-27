@@ -21,12 +21,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { BusinessCharts } from '@/app/admin/analytics/_components/business-charts';
-import DateRangePicker from '@/app/admin/analytics/_components/date-range-picker';
-import StatsCards from '@/app/admin/analytics/_components/stats-cards';
-import OrderStockGrid from '@/app/admin/analytics/_components/order-stock-grid';
-import { useAnalytics } from './useAnalytics';
-import { exportAnalyticsToExcel } from './export-utils';
+import { BusinessCharts } from '@/features/admin/components/analytics/business-charts';
+import DateRangePicker from '@/features/admin/components/analytics/date-range-picker';
+import StatsCards from '@/features/admin/components/analytics/stats-cards';
+import OrderStockGrid from '@/features/admin/components/analytics/order-stock-grid';
+import { useAnalytics } from '@/features/admin/hooks/useAnalytics';
+import { exportAnalyticsToExcel } from '@/features/admin/utils/export-utils';
 
 function AnalyticsContent() {
   const {

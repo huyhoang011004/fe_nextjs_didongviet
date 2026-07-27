@@ -12,24 +12,24 @@ import {
   Truck,
   RotateCcw,
 } from 'lucide-react';
-import { useCartStore } from '@/app/(shop)/cart/useCartStore';
-import VoucherList from '../cart/_components/VoucherList';
+import { useCartStore } from '@/features/cart/hooks/useCartStore';
+import VoucherList from '@/features/cart/components/VoucherList';
 import {
   fetchVouchers,
   findVoucherByCode,
   calcVoucherValue,
   applyVoucherServer,
-} from '../cart/cart-actions';
-import { createMoMoPayment, createVNPayPayment, calculateShippingFee } from './checkout-actions';
-import { VIETNAM_PROVINCES, getBranchRegion } from './_components/checkout-utils';
-import AddressModal from './_components/AddressModal';
+} from '@/features/cart/actions/cart-actions';
+import { createMoMoPayment, createVNPayPayment, calculateShippingFee } from '@/features/checkout/actions/checkout-actions';
+import { VIETNAM_PROVINCES, getBranchRegion } from '@/features/checkout/components/checkout-utils';
+import AddressModal from '@/features/checkout/components/AddressModal';
 
-import CheckoutAddressForm from './_components/CheckoutAddressForm';
-import CheckoutProductList from './_components/CheckoutProductList';
-import BranchSelector from './_components/BranchSelector';
-import PaymentMethods from './_components/PaymentMethods';
-import PaymentSummary from './_components/PaymentSummary';
-import { useCheckoutState } from './useCheckoutState';
+import CheckoutAddressForm from '@/features/checkout/components/CheckoutAddressForm';
+import CheckoutProductList from '@/features/checkout/components/CheckoutProductList';
+import BranchSelector from '@/features/checkout/components/BranchSelector';
+import PaymentMethods from '@/features/checkout/components/PaymentMethods';
+import PaymentSummary from '@/features/checkout/components/PaymentSummary';
+import { useCheckoutState } from '@/features/checkout/hooks/useCheckoutState';
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
 

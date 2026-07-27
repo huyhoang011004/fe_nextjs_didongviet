@@ -1,4 +1,4 @@
-import { ForgotPasswordForm } from '@/app/(auth)/_components/forgot-password/forgot-password-form';
+import { ForgotPasswordForm } from '@/features/auth/components/forgot-password/forgot-password-form';
 import { Suspense } from 'react';
 
 export const metadata = {
