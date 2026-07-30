@@ -41,8 +41,9 @@ export async function signupAction(
   }
 
   try {
+    const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/v1';
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || ''}/auth/signup`,
+      `${apiUrl}/auth/signup`,
       {
         method: 'POST',
         headers: {
